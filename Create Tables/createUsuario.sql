@@ -10,6 +10,13 @@ create table USUARIO (
     constraint PK_USUARIO primary key(ID)
 );
 
+CREATE TABLE ASSUNTO (
+    TEMA VARCHAR2(50),
+    SUB_TEMA VARCHAR2(50),
+    
+    CONSTRAINT PK_ASSUNTO PRIMARY KEY (TEMA, SUB_TEMA)
+);
+
 insert into USUARIO (EMAIL, NOME) values (
     'teste@gmail.com',
     'Teste Da Silva'
