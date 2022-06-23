@@ -38,9 +38,14 @@ create table CURSO (
     SOMA_AVALIACAO number(7) default 0,
     QTD_AVALIACAO number(7) default 0,
     
+    --Constraints básicas
     constraint PK_CURSO primary key(ID),
     constraint SK_CURSO unique(TITULO, DATA_LANCAMENTO),
-    constraint FK_CURSO foreign key(TEMA, SUB_TEMA) references ASSUNTO
+    constraint FK_CURSO foreign key(TEMA, SUB_TEMA) references ASSUNTO,
+    
+    --Constraints de checagem
+    constraint CK_NRO_AULAS check(NRO_AULAS > 0),
+    constraint CK_PRECO check(PRECO >= 0)
 );
 
 insert into USUARIO (EMAIL, NOME) values (
