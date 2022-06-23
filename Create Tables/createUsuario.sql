@@ -281,3 +281,5 @@ insert into PALESTRANTE (NOME) values (
 );
 
 commit;
+
+oie
