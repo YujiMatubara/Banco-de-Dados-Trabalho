@@ -51,9 +51,12 @@ CREATE TABLE CONQUISTA_REQUISITO (
 
 -- on delete cascade pq não faz sentido desbloquear uma conquista sem um usuário ou conquista específica associado a ela
  CREATE TABLE DESBLOQUEIA_CONQUISTA (
-    NOME_CONQUISTA VARCHAR2(30),
+    
+     --Atributos
+     NOME_CONQUISTA VARCHAR2(30),
     USUARIO NUMBER,
     
+     --Constraints básicas
     CONSTRAINT PK_DESBLOQUEIA_CONQUISTA PRIMARY KEY (NOME_CONQUISTA, USUARIO),
     CONSTRAINT FK_NOME_CONQUISTA_DESBLOQUEIA_CONQUISTA FOREIGN KEY (NOME_CONQUISTA) REFERENCES CONQUISTAS (NOME) ON DELETE CASCADE,
     CONSTRAINT FK_USUARIO_DESBLOQUEIA_CONQUISTA FOREIGN KEY (USUARIO) REFERENCES USUARIO (ID) ON DELETE CASCADE
@@ -91,7 +94,7 @@ create table AMIZADE (
     AMIGO number,
     DATA_INICIO_AMIZADE date default sysdate not null,
     
-    --Contraints básicas
+    --Constraints básicas
     constraint PK_AMIZADE primary key(USUARIO, AMIGO),
     constraint FK_AMIZADE_USUARIO foreign key (USUARIO) references USUARIO(ID)
         on delete cascade,
@@ -107,7 +110,7 @@ create table SUPORTE (
     MENSAGEM varchar2(4000) not null,
     RESPOSTA varchar2(4000),
     
-    --Contraints básicas
+    --Constraints básicas
     constraint PK_SUPORTE primary key (USUARIO, DATA_HORA),
     constraint FK_SUPORTE_USUARIO foreign key (USUARIO) references USUARIO(ID)
 );
@@ -122,7 +125,7 @@ create table CURSA(
     COMENTARIO varchar2(180),
     ANOTACOES_PESSOAIS varchar2(1000),
     
-    --Contraints básicas
+    --Constraints básicas
     constraint PK_CURSA primary key(USUARIO, CURSO),
     constraint FK_CURSA_USUARIO foreign key(USUARIO) references USUARIO,
     constraint FK_CURSA_CURSO foreign key(CURSO) references CURSO,
@@ -147,12 +150,22 @@ create table MINISTRA(
     CURSO number,
     PALESTRANTE number,
     
-    --Contraints básicas
+    --Constraints básicas
     constraint PK_MINISTRA primary key(CURSO, PALESTRANTE),
     constraint FK_MINISTRA_CURSO foreign key(CURSO) references CURSO,
     constraint FK_MINISTRA_PALESTRANTE foreign key(PALESTRANTE) references PALESTRANTE
 
 );
+
+create table CURADOR(
+    
+    --Atributos
+    ID number,
+    
+    --Constraints básicas
+    constraint PK_CURADOR primary key(ID),
+    constraint FK_CURADOR foreign key(ID) references USUARIO
+)
 
 insert into USUARIO (EMAIL, NOME) values (
     'teste@gmail.com',
