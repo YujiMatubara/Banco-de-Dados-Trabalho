@@ -31,6 +31,7 @@ create table CURSO (
     --Constraints básicas
     constraint PK_CURSO primary key(ID),
     constraint SK_CURSO unique(TITULO, DATA_LANCAMENTO),
+    --NÃO APAGAR ASSUNTOS
     constraint FK_CURSO foreign key(TEMA, SUB_TEMA) references ASSUNTO(TEMA, SUB_TEMA),
     
     --Constraints de checagem
@@ -39,10 +40,15 @@ create table CURSO (
 );
 
 CREATE TABLE ASSUNTO (
+    
+    --Atributos
     TEMA VARCHAR2(50),
     SUB_TEMA VARCHAR2(50),
     
+    --Contraints básicas
     CONSTRAINT PK_ASSUNTO PRIMARY KEY (TEMA, SUB_TEMA),
+    
+    --Constraints de checagem
     CONSTRAINT CK_ASSUNTO CHECK (TEMA <> SUB_TEMA)
 );
 
@@ -83,7 +89,7 @@ CREATE TABLE CONQUISTA_REQUISITO (
     CONSTRAINT FK_USUARIO_DESBLOQUEIA_CONQUISTA FOREIGN KEY (USUARIO) REFERENCES USUARIO (ID) ON DELETE CASCADE
  );
  
-  CREATE TABLE ATUALIZA_PALESTRANTE (
+ CREATE TABLE ATUALIZA_PALESTRANTE (
       
     --Atributos
     CURADOR NUMBER,
@@ -93,7 +99,7 @@ CREATE TABLE CONQUISTA_REQUISITO (
     --Constraints básicas  
     CONSTRAINT PK_ATUALIZA_PALESTRANTE PRIMARY KEY (CURADOR, PALESTRANTE, DATA_HORA_ATUALIZACAO),
     CONSTRAINT FK_CURADOR_ATUALIZA_PALESTRANTE FOREIGN KEY (CURADOR) REFERENCES CURADOR (ID),
-    CONSTRAINT FK_PALESTRANTE_ATUALIZA_PALESTRANTE FOREIGN KEY (PALESTRANTE) REFERENCES PALESTRANTE (ID)
+    CONSTRAINT FK_PALESTRANTE_ATUALIZA_PALESTRANTE FOREIGN KEY (PALESTRANTE) REFERENCES PALESTRANTE (ID) ON DELETE CASCADE
  );
  
   CREATE TABLE RESPONDE_QUIZ (
@@ -110,7 +116,11 @@ CREATE TABLE CONQUISTA_REQUISITO (
  CREATE TABLE COMENTARIO (
     ID NUMBER GENERATED ALWAYS AS IDENTITY,
     THREAD NUMBER NOT NULL,
-    USUARIO NUMBER NOT NULL,
+    --O usuário vai poder ser nulo no sql porquê isso será tratado na aplicação.
+    --Já que, para um comentário ser feito, alguém ter que estar logado.
+    --Não será apagado em cascata porque queremos manter o comentário de um usuário mesmo que o usuário não exista mais
+    --(assim como o reddit faz usando um user "u/deleted")
+    USUARIO NUMBER,
     DATA_HORA_PUBLICACAO DATE NOT NULL,
     COMENTARIO VARCHAR2(4000),
     
@@ -222,8 +232,8 @@ create table MINISTRA(
     
     --Constraints básicas
     constraint PK_MINISTRA primary key(CURSO, PALESTRANTE),
-    constraint FK_MINISTRA_CURSO foreign key(CURSO) references CURSO,
-    constraint FK_MINISTRA_PALESTRANTE foreign key(PALESTRANTE) references PALESTRANTE
+    constraint FK_MINISTRA_CURSO foreign key(CURSO) references CURSO on delete cascade,
+    constraint FK_MINISTRA_PALESTRANTE foreign key(PALESTRANTE) references PALESTRANTE on delete cascade
 
 );
 
@@ -234,7 +244,7 @@ create table CURADOR(
     
     --Constraints básicas
     constraint PK_CURADOR primary key(ID),
-    constraint FK_CURADOR foreign key(ID) references USUARIO
+    constraint FK_CURADOR foreign key(ID) references USUARIO on delete cascade
 )
 
 create table ATUALIZA_CURSO(
@@ -249,15 +259,20 @@ create table ATUALIZA_CURSO(
 );
 
 create table QUIZ (
+    
+    --Atributos
     ID number generated always as identity,
     NIVEL varchar2(8),
     TEMA varchar2(50),
     SUB_TEMA varchar2(50),
         
+    --Contraints básicas
     constraint PK_QUIZ primary key (ID),
     constraint SK_QUIZ unique(NIVEL, TEMA, SUB_TEMA),
+    --NÃO APAGAR ASSUNTOS
     constraint FK_QUIZ_ASSUNTO foreign key (TEMA, SUB_TEMA) references ASSUNTO(TEMA, SUB_TEMA),
 
+    --Constraint de checagens
     constraint CK_NIVEL_QUIZ check (NIVEL in ('BRONZE', 'PRATA', 'OURO', 'PLATINA', 'DIAMANTE'))
 );
 
