@@ -319,4 +319,13 @@ insert into PALESTRANTE (NOME) values (
     'El Teste Madrigal'
 );
 
+create table RESPONDE_COMENTARIO (
+    COMENTARIO number,
+    RESPOSTA number,
+    
+    constraint PK_RESPONDE_COMENTARIO primary key (COMENTARIO, RESPOSTA),
+    constraint FK_RESPONDE_COMENTARIO_COMENTARIO foreign key (COMENTARIO) references COMENTARIO(ID),
+    constraint FK_RESPONDE_COMENTARIO_ATUALIZA foreign key (RESPOSTA) references COMENTARIO(ID)
+)
+
 commit;
