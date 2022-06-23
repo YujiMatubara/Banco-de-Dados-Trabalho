@@ -83,4 +83,25 @@ create table SUPORTE (
     constraint FK_SUPORTE_USUARIO foreign key (USUARIO) references USUARIO(ID)
 );
 
+create table CURSA(
+    
+    --Atributos
+    USUARIO number,
+    CURSO number,
+    PROGRESSO varchar2(13) not null,
+    AVALIACAO number(1),
+    COMENTARIO varchar2(180),
+    ANOTACOES_PESSOAIS varchar2(1000),
+    
+    --Contraints básicas
+    constraint PK_CURSA primary key(USUARIO, CURSO),
+    constraint FK_CURSA_USUARIO foreign key(USUARIO) references USUARIO,
+    constraint FK_CURSA_CURSO foreign key(CURSO) references CURSO,
+    
+    --Constraint de checagens
+    constraint CK_PROGRESSO check (PROGRESSO = 'PLANEJADO' OR PROGRESSO = 'EM ANDAMENTO' OR PROGRESSO = 'CONCLUIDO' OR PROGRESSO = 'ABANDONADO'),
+    constraint CK_AVALIACAO check (AVALIACAO >= 0 AND AVALIACAO <= 5)
+    
+);
+
 commit;
