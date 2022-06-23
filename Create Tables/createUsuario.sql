@@ -54,17 +54,20 @@ CREATE TABLE CONQUISTA_REQUISITO (
      NOME_CONQUISTA VARCHAR2(30),
     USUARIO NUMBER,
     
-     --Constraints básicas
+    --Constraints básicas
     CONSTRAINT PK_DESBLOQUEIA_CONQUISTA PRIMARY KEY (NOME_CONQUISTA, USUARIO),
     CONSTRAINT FK_NOME_CONQUISTA_DESBLOQUEIA_CONQUISTA FOREIGN KEY (NOME_CONQUISTA) REFERENCES CONQUISTAS (NOME) ON DELETE CASCADE,
     CONSTRAINT FK_USUARIO_DESBLOQUEIA_CONQUISTA FOREIGN KEY (USUARIO) REFERENCES USUARIO (ID) ON DELETE CASCADE
  );
  
   CREATE TABLE ATUALIZA_PALESTRANTE (
+      
+    --Atributos
     CURADOR NUMBER,
     PALESTRANTE NUMBER, 
     DATA_HORA_ATUALIZACAO DATE,
     
+    --Constraints básicas  
     CONSTRAINT PK_ATUALIZA_PALESTRANTE PRIMARY KEY (CURADOR, PALESTRANTE, DATA_HORA_ATUALIZACAO),
     CONSTRAINT FK_CURADOR_ATUALIZA_PALESTRANTE FOREIGN KEY (CURADOR) REFERENCES CURADOR (ID),
     CONSTRAINT FK_PALESTRANTE_ATUALIZA_PALESTRANTE FOREIGN KEY (PALESTRANTE) REFERENCES PALESTRANTE (ID)
@@ -96,19 +99,25 @@ create table CURSO (
 );
 
 create table CURSO_MIDIA (
+    
+    --Atributos
     CURSO number,
     MIDIA varchar2(64),
     
+    --Constraints básicas
     constraint PK_CURSO_MIDIA primary key (CURSO, MIDIA),
     constraint FK_CURSO_MIDIA foreign key (CURSO) references CURSO(ID)
         on delete cascade
 );
 
 create table CURSO_LINK (
+    
+    --Atributos
     CURSO number,
     URL varchar2(2048),
     PLATAFORMA varchar2(50) not null,
     
+    --Constraints básicas
     constraint PK_CURSO_LINK primary key (CURSO, URL),
     constraint FK_CURSO_LINK foreign key (CURSO) references CURSO(ID)
         on delete cascade,
@@ -165,6 +174,8 @@ create table CURSA(
 );
 
 create table PALESTRANTE (
+    
+    --Atributos
     ID number generated always as identity,
     NOME varchar2(100) not null,
     
