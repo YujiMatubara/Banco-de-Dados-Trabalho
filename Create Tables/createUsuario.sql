@@ -16,6 +16,8 @@ create table USUARIO (
 );
 
 create table CURSO (
+    
+    --Atributos
     ID number generated always as identity,
     TITULO varchar2(100) not null,
     DATA_LANCAMENTO date not null,
@@ -103,19 +105,27 @@ CREATE TABLE CONQUISTA_REQUISITO (
  );
  
   CREATE TABLE RESPONDE_QUIZ (
+    
+    --Atributos  
     USUARIO NUMBER,
     QUIZ NUMBER,
     PONTOS NUMBER NOT NULL,
     
+     --Constraints básicas  
     CONSTRAINT PK_RESPONDE_QUIZ PRIMARY KEY (USUARIO, QUIZ),
     CONSTRAINT FK_USUARIO_RESPONDE_QUIZ FOREIGN KEY (USUARIO) REFERENCES USUARIO (ID) ON DELETE CASCADE,
     CONSTRAINT FK_QUIZ_RESPONDE_QUIZ FOREIGN KEY (QUIZ) REFERENCES QUIZ (ID) ON DELETE CASCADE,
+      
+    --Constraints de checagem 
     CONSTRAINT CK_PONTOS_RESPONDE_QUIZ CHECK (PONTOS >= 0)
  );
  
  CREATE TABLE COMENTARIO (
-    ID NUMBER GENERATED ALWAYS AS IDENTITY,
+    
+     --Atributos
+     ID NUMBER GENERATED ALWAYS AS IDENTITY,
     THREAD NUMBER NOT NULL,
+     
     --O usuário vai poder ser nulo no sql porquê isso será tratado na aplicação.
     --Já que, para um comentário ser feito, alguém ter que estar logado.
     --Não será apagado em cascata porque queremos manter o comentário de um usuário mesmo que o usuário não exista mais
@@ -124,6 +134,7 @@ CREATE TABLE CONQUISTA_REQUISITO (
     DATA_HORA_PUBLICACAO DATE NOT NULL,
     COMENTARIO VARCHAR2(4000),
     
+    --Constraints básicas 
     CONSTRAINT PK_COMENTARIO PRIMARY KEY (ID),
     CONSTRAINT FK_USUARIO_COMENTARIO FOREIGN KEY (USUARIO) REFERENCES USUARIO (ID),
     CONSTRAINT FK_THREAD_COMENATRIO FOREIGN KEY (THREAD) REFERENCES THREAD (ID) ON DELETE CASCADE,
@@ -216,6 +227,8 @@ create table PALESTRANTE (
 );
 
 create table PALESTRANTE_ESPECIALIZACAO (
+    
+    --Atributos
     PALESTRANTE number,
     ESPECIALIZACAO varchar2(50),
     
@@ -297,10 +310,13 @@ create table QUIZ_PERGUNTAS(
 );
 
 create table THREAD (
+    
+    --Atributos
     ID number generated always as identity,
     TITULO varchar2(100) not null,
     CURSO number not null,
     ASSUNTO varchar2(4000) not null,
+    
     --O usuário vai poder ser nulo no sql porquê isso será tratado na aplicação.
     --Já que, para um comentário ser feito, alguém ter que estar logado.
     --Não será apagado em cascata porque queremos mantera thread de um usuário mesmo que o usuário não exista mais
@@ -314,6 +330,19 @@ create table THREAD (
     constraint FK_THREAD_USUARIO foreign key(USUARIO) references USUARIO(ID)
 );
 
+create table RESPONDE_COMENTARIO (
+    
+    --Atributos
+    COMENTARIO number,
+    RESPOSTA number,
+    
+    --Verificar o emaranhado que fizemos aqui com as respostas encadeadas na hora da exclusao de um comentário aninhado
+    --Contraint básicas
+    constraint PK_RESPONDE_COMENTARIO primary key (COMENTARIO, RESPOSTA),
+    constraint FK_RESPONDE_COMENTARIO_COMENTARIO foreign key (COMENTARIO) references COMENTARIO(ID),
+    constraint FK_RESPONDE_COMENTARIO_RESPOSTA foreign key (RESPOSTA) references COMENTARIO(ID) 
+)
+
 insert into USUARIO (EMAIL, NOME) values (
     'teste@gmail.com',
     'Teste Da Silva'
@@ -323,13 +352,5 @@ insert into PALESTRANTE (NOME) values (
     'El Teste Madrigal'
 );
 
-create table RESPONDE_COMENTARIO (
-    COMENTARIO number,
-    RESPOSTA number,
-    
-    constraint PK_RESPONDE_COMENTARIO primary key (COMENTARIO, RESPOSTA),
-    constraint FK_RESPONDE_COMENTARIO_COMENTARIO foreign key (COMENTARIO) references COMENTARIO(ID),
-    constraint FK_RESPONDE_COMENTARIO_RESPOSTA foreign key (RESPOSTA) references COMENTARIO(ID) 
-)
 
 commit;
