@@ -204,6 +204,17 @@ create table CURADOR(
     constraint FK_CURADOR foreign key(ID) references USUARIO
 )
 
+create table ATUALIZA_CURSO(
+
+    --Atributos
+    CURADOR number,
+    CURSO number,
+    DATA_HORA_ATUALIZACAO date,
+    
+    --Contraints básicas
+    constraint PK_ATUALIZA_CURSO primary key(CURADOR, CURSO, DATA_HORA_ATUALIZACAO)
+);
+
 insert into USUARIO (EMAIL, NOME) values (
     'teste@gmail.com',
     'Teste Da Silva'
