@@ -84,11 +84,6 @@ create table CURSO (
     constraint CK_PRECO check(PRECO >= 0)
 );
 
-insert into USUARIO (EMAIL, NOME) values (
-    'teste@gmail.com',
-    'Teste Da Silva'
-);
-
 create table AMIZADE (
     
     --Atributos
@@ -144,6 +139,24 @@ create table PALESTRANTE (
     
     --Constraints básicas
     constraint PK_PALESTRANTE primary key(ID)
+);
+
+create table MINISTRA(
+    
+    --Atributos
+    CURSO number,
+    PALESTRANTE number,
+    
+    --Contraints básicas
+    constraint PK_MINISTRA primary key(CURSO, PALESTRANTE),
+    constraint FK_MINISTRA_CURSO foreign key(CURSO) references CURSO,
+    constraint FK_MINISTRA_PALESTRANTE foreign key(PALESTRANTE) references PALESTRANTE
+
+);
+
+insert into USUARIO (EMAIL, NOME) values (
+    'teste@gmail.com',
+    'Teste Da Silva'
 );
 
 insert into PALESTRANTE (NOME) values (
