@@ -15,6 +15,29 @@ create table USUARIO (
     constraint NIVEL_PRIV_CONSTRAINT check (NIVEL_DE_PRIVILEGIO in ('1', '0'))
 );
 
+create table CURSO (
+    ID number generated always as identity,
+    TITULO varchar2(100) not null,
+    DATA_LANCAMENTO date not null,
+    TEMA varchar2(50) not null,
+    SUB_TEMA varchar2(50) not null,
+    PRECO number(5) default 0,
+    NRO_AULAS number(4),
+    IDIOMA varchar2(20),
+    DURACAO varchar2(50),
+    SOMA_AVALIACAO number(7) default 0,
+    QTD_AVALIACAO number(7) default 0,
+    
+    --Constraints básicas
+    constraint PK_CURSO primary key(ID),
+    constraint SK_CURSO unique(TITULO, DATA_LANCAMENTO),
+    constraint FK_CURSO foreign key(TEMA, SUB_TEMA) references ASSUNTO(TEMA, SUB_TEMA),
+    
+    --Constraints de checagem
+    constraint CK_NRO_AULAS check(NRO_AULAS > 0),
+    constraint CK_PRECO check(PRECO >= 0)
+);
+
 CREATE TABLE ASSUNTO (
     TEMA VARCHAR2(50),
     SUB_TEMA VARCHAR2(50),
@@ -72,31 +95,6 @@ CREATE TABLE CONQUISTA_REQUISITO (
     CONSTRAINT FK_CURADOR_ATUALIZA_PALESTRANTE FOREIGN KEY (CURADOR) REFERENCES CURADOR (ID),
     CONSTRAINT FK_PALESTRANTE_ATUALIZA_PALESTRANTE FOREIGN KEY (PALESTRANTE) REFERENCES PALESTRANTE (ID)
  );
-
-create table CURSO (
-    
-    --Atributos
-    ID number generated always as identity,
-    TITULO varchar2(100) not null,
-    DATA_LANCAMENTO date not null,
-    TEMA varchar2(50) not null,
-    SUB_TEMA varchar2(50) not null,
-    PRECO number(5) default 0,
-    NRO_AULAS number(4),
-    IDIOMA varchar2(20),
-    DURACAO varchar2(50),
-    SOMA_AVALIACAO number(7) default 0,
-    QTD_AVALIACAO number(7) default 0,
-    
-    --Constraints básicas
-    constraint PK_CURSO primary key(ID),
-    constraint SK_CURSO unique(TITULO, DATA_LANCAMENTO),
-    constraint FK_CURSO foreign key(TEMA, SUB_TEMA) references ASSUNTO,
-    
-    --Constraints de checagem
-    constraint CK_NRO_AULAS check(NRO_AULAS > 0),
-    constraint CK_PRECO check(PRECO >= 0)
-);
 
 create table CURSO_MIDIA (
     
@@ -187,9 +185,9 @@ create table PALESTRANTE_ESPECIALIZACAO (
     PALESTRANTE number,
     ESPECIALIZACAO varchar2(50),
     
-    --Constraints de básicas
+    --Constraints básicas
     constraint PK_PALESTRANTE_ESPECIALIZACAO primary key(PALESTRANTE, ESPECIALIZACAO),
-    constraint FK_PALESTRANTE_ESPECIALIZACAO foreign key(PALESTRANTE) references PALESTRANTE
+    constraint FK_PALESTRANTE_ESPECIALIZACAO foreign key(PALESTRANTE) references PALESTRANTE(ID)
 );
 
 create table MINISTRA(
