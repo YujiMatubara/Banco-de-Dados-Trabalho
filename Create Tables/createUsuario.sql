@@ -138,4 +138,16 @@ create table CURSA(
     
 );
 
+create table PALESTRANTE (
+    ID number generated always as identity,
+    NOME varchar2(100) not null,
+    
+    --Constraints básicas
+    constraint PK_PALESTRANTE primary key(ID)
+);
+
+insert into PALESTRANTE (NOME) values (
+    'El Teste Madrigal'
+);
+
 commit;
