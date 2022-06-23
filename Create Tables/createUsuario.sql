@@ -40,4 +40,14 @@ insert into USUARIO (EMAIL, NOME) values (
     'Teste Da Silva'
 );
 
+create table AMIZADE (
+    USUARIO number,
+    AMIGO number,
+    DATA_INICIO_AMIZADE date default sysdate not null,
+    
+    constraint PK_AMIZADE primary key(USUARIO, AMIGO),
+    constraint FK_AMIZADE_USUARIO foreign key (USUARIO) references USUARIO(ID),
+    constraint FK_AMIZADE_AMIGO foreign key (AMIGO) references USUARIO(ID)
+);
+
 commit
