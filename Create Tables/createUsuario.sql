@@ -1,39 +1,57 @@
 create table USUARIO (
+    
+    --Atributos
     ID number generated always as identity,
     EMAIL varchar2(255) not null,
     NOME varchar2(100) not null,
     NIVEL_DE_PRIVILEGIO char default '0' not null,
     NIVEL_DE_CONQUISTA number(4) default 0 not null,
     
-    constraint NIVEL_PRIV_CONSTRAINT check (NIVEL_DE_PRIVILEGIO in ('1', '0')),
+    --Constraints básicas
     constraint EMAIL_UNIQUE unique(EMAIL),
-    constraint PK_USUARIO primary key(ID)
+    constraint PK_USUARIO primary key(ID),
+    
+    --Constraints de checagem
+    constraint NIVEL_PRIV_CONSTRAINT check (NIVEL_DE_PRIVILEGIO in ('1', '0'))
 );
 
 CREATE TABLE ASSUNTO (
+    
+    --Atributos
     TEMA VARCHAR2(50),
     SUB_TEMA VARCHAR2(50),
     
+    --Constraints básicas
     CONSTRAINT PK_ASSUNTO PRIMARY KEY (TEMA, SUB_TEMA)
 );
 
 CREATE TABLE CONQUISTAS (
+   
+    --Atributos
     NOME VARCHAR2(30),
     NIVEL VARCHAR2(8),
     
+    --Contraints básicas
     CONSTRAINT PK_CONQUISTAS PRIMARY KEY (NOME),
+    
+    --Constraints de checagem
     CONSTRAINT CK_NIVEL_CONQUISTA CHECK (UPPER(NIVEL) IN ('BRONZE', 'PRATA', 'OURO', 'PLATINA', 'DIAMANTE'))
 );
 
 CREATE TABLE CONQUISTA_REQUISITO (
+    
+    --Atributos
     NOME VARCHAR2(30),
     DESCRICAO_REQUISITO VARCHAR2(500),
     
+    --Contraints básicas
     CONSTRAINT PK_CONQUISTA_REQUISITO PRIMARY KEY (NOME, DESCRICAO_REQUISITO),
     CONSTRAINT FK_NOME_CONQUISTA_REQUISITO FOREIGN KEY (NOME) REFERENCES CONQUISTAS (NOME) ON DELETE CASCADE
 ); 
 
 create table CURSO (
+    
+    --Atributos
     ID number generated always as identity,
     TITULO varchar2(100) not null,
     DATA_LANCAMENTO date not null,
@@ -62,10 +80,13 @@ insert into USUARIO (EMAIL, NOME) values (
 );
 
 create table AMIZADE (
+    
+    --Atributos
     USUARIO number,
     AMIGO number,
     DATA_INICIO_AMIZADE date default sysdate not null,
     
+    --Contraints básicas
     constraint PK_AMIZADE primary key(USUARIO, AMIGO),
     constraint FK_AMIZADE_USUARIO foreign key (USUARIO) references USUARIO(ID)
         on delete cascade,
@@ -74,11 +95,14 @@ create table AMIZADE (
 );
 
 create table SUPORTE (
+    
+    --Atributos
     USUARIO number,
     DATA_HORA date,
     MENSAGEM varchar2(4000) not null,
     RESPOSTA varchar2(4000),
     
+    --Contraints básicas
     constraint PK_SUPORTE primary key (USUARIO, DATA_HORA),
     constraint FK_SUPORTE_USUARIO foreign key (USUARIO) references USUARIO(ID)
 );
