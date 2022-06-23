@@ -290,7 +290,7 @@ create table QUIZ_PERGUNTAS(
     
     --Contraints básicas
     constraint PK_QUIZ_PERGUNTAS primary key(ID, QUESTAO),
-    constraint FK_QUIZ_PERGUNTAS foreign key(ID) references QUIZ,
+    constraint FK_QUIZ_PERGUNTAS foreign key(ID) references QUIZ on delete cascade,
     
     --Constraint de checagens
     constraint CK_RESPOSTA check(RESPOSTA = 'A' OR RESPOSTA = 'B' OR RESPOSTA = 'C' OR RESPOSTA = 'D' OR RESPOSTA = 'E' )
@@ -301,7 +301,11 @@ create table THREAD (
     TITULO varchar2(100) not null,
     CURSO number not null,
     ASSUNTO varchar2(4000) not null,
-    USUARIO number not null,
+    --O usuário vai poder ser nulo no sql porquê isso será tratado na aplicação.
+    --Já que, para um comentário ser feito, alguém ter que estar logado.
+    --Não será apagado em cascata porque queremos mantera thread de um usuário mesmo que o usuário não exista mais
+    --(assim como o reddit faz usando um user "u/deleted")
+    USUARIO number,
     
     --Contraint básicas
     constraint PK_THREAD primary key(ID),
@@ -325,7 +329,7 @@ create table RESPONDE_COMENTARIO (
     
     constraint PK_RESPONDE_COMENTARIO primary key (COMENTARIO, RESPOSTA),
     constraint FK_RESPONDE_COMENTARIO_COMENTARIO foreign key (COMENTARIO) references COMENTARIO(ID),
-    constraint FK_RESPONDE_COMENTARIO_ATUALIZA foreign key (RESPOSTA) references COMENTARIO(ID)
+    constraint FK_RESPONDE_COMENTARIO_RESPOSTA foreign key (RESPOSTA) references COMENTARIO(ID) 
 )
 
 commit;
