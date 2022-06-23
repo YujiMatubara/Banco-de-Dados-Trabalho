@@ -144,6 +144,15 @@ create table PALESTRANTE (
     constraint PK_PALESTRANTE primary key(ID)
 );
 
+create table PALESTRANTE_ESPECIALIZACAO (
+    PALESTRANTE number,
+    ESPECIALIZACAO varchar2(50),
+    
+    --Constraints de básicas
+    constraint PK_PALESTRANTE_ESPECIALIZACAO primary key(PALESTRANTE, ESPECIALIZACAO),
+    constraint FK_PALESTRANTE_ESPECIALIZACAO foreign key(PALESTRANTE) references PALESTRANTE
+);
+
 create table MINISTRA(
     
     --Atributos
