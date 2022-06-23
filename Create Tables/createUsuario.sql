@@ -237,6 +237,20 @@ create table QUIZ (
     constraint CK_NIVEL_QUIZ check (NIVEL in ('BRONZE', 'PRATA', 'OURO', 'PLATINA', 'DIAMANTE'))
 );
 
+create table THREAD (
+    ID number generated always as identity,
+    TITULO varchar2(100) not null,
+    CURSO number not null,
+    ASSUNTO varchar2(4000) not null,
+    USUARIO number not null,
+    
+    --Contraint básicas
+    constraint PK_THREAD primary key(ID),
+    constraint SK_THREAD unique(TITULO, CURSO),
+    constraint FK_THREAD_CURSO foreign key(CURSO) references CURSO(ID) ON DELETE CASCADE,
+    constraint FK_THREAD_USUARIO foreign key(USUARIO) references USUARIO(ID)
+);
+
 insert into USUARIO (EMAIL, NOME) values (
     'teste@gmail.com',
     'Teste Da Silva'
