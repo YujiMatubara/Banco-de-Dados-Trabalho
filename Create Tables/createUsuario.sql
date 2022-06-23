@@ -224,6 +224,19 @@ create table ATUALIZA_CURSO(
     constraint PK_ATUALIZA_CURSO primary key(CURADOR, CURSO, DATA_HORA_ATUALIZACAO)
 );
 
+create table QUIZ (
+    ID number generated always as identity,
+    NIVEL varchar2(8),
+    TEMA varchar2(50),
+    SUB_TEMA varchar2(50),
+        
+    constraint PK_QUIZ primary key (ID),
+    constraint SK_QUIZ unique(NIVEL, TEMA, SUB_TEMA),
+    constraint FK_QUIZ_ASSUNTO foreign key (TEMA, SUB_TEMA) references ASSUNTO(TEMA, SUB_TEMA),
+
+    constraint CK_NIVEL_QUIZ check (NIVEL in ('BRONZE', 'PRATA', 'OURO', 'PLATINA', 'DIAMANTE'))
+);
+
 insert into USUARIO (EMAIL, NOME) values (
     'teste@gmail.com',
     'Teste Da Silva'
