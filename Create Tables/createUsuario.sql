@@ -187,7 +187,7 @@ create table PALESTRANTE_ESPECIALIZACAO (
     
     --Constraints básicas
     constraint PK_PALESTRANTE_ESPECIALIZACAO primary key(PALESTRANTE, ESPECIALIZACAO),
-    constraint FK_PALESTRANTE_ESPECIALIZACAO foreign key(PALESTRANTE) references PALESTRANTE(ID)
+    constraint FK_PALESTRANTE_ESPECIALIZACAO foreign key(PALESTRANTE) references PALESTRANTE(ID) ON DELETE CASCADE
 );
 
 create table MINISTRA(
