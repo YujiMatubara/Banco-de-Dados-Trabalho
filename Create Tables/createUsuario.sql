@@ -87,6 +87,26 @@ create table CURSO (
     constraint CK_PRECO check(PRECO >= 0)
 );
 
+create table CURSO_MIDIA (
+    CURSO number,
+    MIDIA varchar2(64),
+    
+    constraint PK_CURSO_MIDIA primary key (CURSO, MIDIA),
+    constraint FK_CURSO_MIDIA foreign key (CURSO) references CURSO(ID)
+        on delete cascade
+);
+
+create table CURSO_LINK (
+    CURSO number,
+    URL varchar2(2048),
+    PLATAFORMA varchar2(50) not null,
+    
+    constraint PK_CURSO_LINK primary key (CURSO, URL),
+    constraint FK_CURSO_LINK foreign key (CURSO) references CURSO(ID)
+        on delete cascade,
+    constraint UNIQUE_CURSO_LINK_URL unique(URL)
+);
+
 create table AMIZADE (
     
     --Atributos
