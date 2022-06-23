@@ -237,6 +237,26 @@ create table QUIZ (
     constraint CK_NIVEL_QUIZ check (NIVEL in ('BRONZE', 'PRATA', 'OURO', 'PLATINA', 'DIAMANTE'))
 );
 
+create table QUIZ_PERGUNTAS(
+    
+    --Atributos
+    ID number generated always as identity,
+    QUESTAO varchar2(1000),
+    RESPOSTA varchar2(1) not null,
+    ALTERNATIVA_A varchar2(500) not null,
+    ALTERNATIVA_B varchar2(500) not null,
+    ALTERNATIVA_C varchar2(500) not null,
+    ALTERNATIVA_D varchar2(500) not null,
+    ALTERNATIVA_E varchar2(500) not null,
+    
+    --Contraints básicas
+    constraint PK_QUIZ_PERGUNTAS primary key(ID, QUESTAO),
+    constraint FK_QUIZ_PERGUNTAS foreign key(ID) references QUIZ,
+    
+    --Constraint de checagens
+    constraint CK_RESPOSTA check(RESPOSTA = 'A' OR RESPOSTA = 'B' OR RESPOSTA = 'C' OR RESPOSTA = 'D' OR RESPOSTA = 'E' )
+);
+
 create table THREAD (
     ID number generated always as identity,
     TITULO varchar2(100) not null,
