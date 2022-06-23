@@ -65,4 +65,14 @@ create table AMIZADE (
         on delete cascade
 );
 
-commit
+create table SUPORTE (
+    USUARIO number,
+    DATA_HORA date,
+    MENSAGEM varchar2(4000) not null,
+    RESPOSTA varchar2(4000),
+    
+    constraint PK_SUPORTE primary key (USUARIO, DATA_HORA),
+    constraint FK_SUPORTE_USUARIO foreign key (USUARIO) references USUARIO(ID)
+);
+
+commit;
