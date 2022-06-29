@@ -3,7 +3,10 @@
 #https://stackoverflow.com/questions/72015723/databaseerror-dpi-1047-cannot-locate-a-64-bit-oracle-client-library-running-c
 
 import cx_Oracle
+from util.janelas import *
+from util.controleSGBD import *
 
+print("Iniciando conexao com servidor")
 #colocando o cliente do oracle
 cx_Oracle.init_oracle_client(lib_dir=r"C:\Users\11795634\Desktop\instantclient_21_6")
 
@@ -15,6 +18,8 @@ cursor = enter_user.cursor()
 #usando o sql
 #TESTE
 #cursor.execute('insert into USUARIO (EMAIL, NOME) values (\'teste@gmail.com\',\'Teste Da Silva\')')
+token = login(cursor)
+
 
 #commit
 enter_user.commit()
