@@ -13,6 +13,55 @@ INSERT INTO USUARIO
 VALUES
 ('pedro@usp.br', 'Pedro Henrique', 1, 1231);
 
+INSERT INTO USUARIO 
+(EMAIL, NOME, NIVEL_DE_PRIVILEGIO, NIVEL_DE_CONQUISTA) 
+VALUES
+('luisa@usp.br', 'Luisa Balleroni', 1, 1400);
+
+INSERT INTO USUARIO 
+(EMAIL, NOME, NIVEL_DE_PRIVILEGIO, NIVEL_DE_CONQUISTA) 
+VALUES
+('bermudes@gmail.com.br', 'Matheus Bermudes Viana', 0, 1100);
+
+INSERT INTO USUARIO 
+(EMAIL, NOME, NIVEL_DE_PRIVILEGIO, NIVEL_DE_CONQUISTA) 
+VALUES
+('lucas_matos@gmail.com.br', 'Lucas Matos', 0, 120);
+
+INSERT INTO USUARIO 
+(EMAIL, NOME, NIVEL_DE_PRIVILEGIO, NIVEL_DE_CONQUISTA) 
+VALUES
+('laura_matiolli@gmail.com.br', 'Laura Matiolli', 0, 450);
+
+INSERT INTO USUARIO 
+(EMAIL, NOME, NIVEL_DE_PRIVILEGIO, NIVEL_DE_CONQUISTA) 
+VALUES
+('camila_sakuraba@gmail.com.br', 'Camila Pigato Sakuraba', 0, 120);
+
+INSERT INTO USUARIO 
+(EMAIL, NOME, NIVEL_DE_PRIVILEGIO, NIVEL_DE_CONQUISTA) 
+VALUES
+('vinicius_guedes@gmail.com.br', 'Vinicius Guedes', 0, 30);
+
+INSERT INTO USUARIO 
+(EMAIL, NOME, NIVEL_DE_PRIVILEGIO, NIVEL_DE_CONQUISTA) 
+VALUES
+('caue_trevelin@gmail.com.br', 'Caue Trevelin', 1, 470);
+
+INSERT INTO USUARIO 
+(EMAIL, NOME, NIVEL_DE_PRIVILEGIO, NIVEL_DE_CONQUISTA) 
+VALUES
+('aline_ventura@gmail.com.br', 'Aline Ventura', 0, 320);
+
+INSERT INTO USUARIO 
+(EMAIL, NOME, NIVEL_DE_PRIVILEGIO, NIVEL_DE_CONQUISTA) 
+VALUES
+('nick_iacobacci@gmail.com.br', 'Nicole Iacobacci', 0, 320);
+
+INSERT INTO USUARIO 
+(EMAIL, NOME, NIVEL_DE_PRIVILEGIO, NIVEL_DE_CONQUISTA) 
+VALUES
+('fernando_yutaka@gmail.com.br', 'Fernando Yutaka', 0, 980);
 
 --------------------------------------------------------------------------------
 INSERT INTO ASSUNTO
@@ -35,6 +84,31 @@ INSERT INTO CURSO
 (TITULO, DATA_LANCAMENTO, TEMA, SUB_TEMA, PRECO, NRO_AULAS, IDIOMA, DURACAO, SOMA_AVALIACAO, QTD_AVALIACAO)
 VALUES
 ('Português, ETEC, 2022, 1 Ano, 1º Semestre', TO_DATE('2020/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS'), 'Português', 'Análise Sintática', 0.00, 20, 'português', '33 horas 0 minutos', 18, 2);
+
+INSERT INTO CURSO
+(TITULO, DATA_LANCAMENTO, TEMA, SUB_TEMA, PRECO, NRO_AULAS, IDIOMA, DURACAO, SOMA_AVALIACAO, QTD_AVALIACAO)
+VALUES
+('Cálculo 1', TO_DATE('2017/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS'), 'Matemática', 'Cálculo', 0.00, 49, 'português', '56 horas 30 minutos', 564, 64);
+
+INSERT INTO CURSO
+(TITULO, DATA_LANCAMENTO, TEMA, SUB_TEMA, PRECO, NRO_AULAS, IDIOMA, DURACAO, SOMA_AVALIACAO, QTD_AVALIACAO)
+VALUES
+('Cálculo 3', TO_DATE('2017/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS'), 'Matemática', 'Cálculo', 0.00, 52, 'português', '61 horas', 639, 90);
+
+INSERT INTO CURSO
+(TITULO, DATA_LANCAMENTO, TEMA, SUB_TEMA, PRECO, NRO_AULAS, IDIOMA, DURACAO, SOMA_AVALIACAO, QTD_AVALIACAO)
+VALUES
+('Cálculo 4', TO_DATE('2017/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS'), 'Matemática', 'Cálculo', 0.00, 38, 'português', '45 horas', 528, 58);
+
+INSERT INTO CURSO
+(TITULO, DATA_LANCAMENTO, TEMA, SUB_TEMA, PRECO, NRO_AULAS, IDIOMA, DURACAO, SOMA_AVALIACAO, QTD_AVALIACAO)
+VALUES
+('Álgebra Linear', TO_DATE('2017/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS'), 'Matemática', 'Álgebra Linear', 0.00, 30, 'português', '31 horas', 1346, 136);
+
+INSERT INTO CURSO
+(TITULO, DATA_LANCAMENTO, TEMA, SUB_TEMA, PRECO, NRO_AULAS, IDIOMA, DURACAO, SOMA_AVALIACAO, QTD_AVALIACAO)
+VALUES
+('Cálculo Numérico', TO_DATE('2017/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS'), 'Matemática', 'Álgebra Linear', 0.00, 26, 'português', '28 horas', 516, 60);
 
 --------------------------------------------------------------------------------
 INSERT INTO CONQUISTAS
@@ -90,6 +164,11 @@ INSERT INTO PALESTRANTE
 (NOME)
 VALUES
 ('João Batista');
+
+INSERT INTO PALESTRANTE
+(NOME)
+VALUES
+('Farid Tari');
 
 --------------------------------------------------------------------------------
 INSERT INTO ATUALIZA_PALESTRANTE
