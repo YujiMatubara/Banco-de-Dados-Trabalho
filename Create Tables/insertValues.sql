@@ -74,6 +74,16 @@ INSERT INTO ASSUNTO
 VALUES
 ('Português', 'Análise Sintática');
 
+INSERT INTO ASSUNTO
+(TEMA, SUB_TEMA)
+VALUES
+('Matemática', 'Cálculo');
+
+INSERT INTO ASSUNTO
+(TEMA, SUB_TEMA)
+VALUES
+('Matemática', 'Álgebra Linear');
+
 --------------------------------------------------------------------------------
 INSERT INTO CURSO
 (TITULO, DATA_LANCAMENTO, TEMA, SUB_TEMA, PRECO, NRO_AULAS, IDIOMA, DURACAO, SOMA_AVALIACAO, QTD_AVALIACAO)
