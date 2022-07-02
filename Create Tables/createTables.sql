@@ -1,6 +1,6 @@
 CREATE TABLE ASSUNTO (
     
-    --Atributo
+    --Atributos
     TEMA VARCHAR2(50),
     SUB_TEMA VARCHAR2(50),
     
