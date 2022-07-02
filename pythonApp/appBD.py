@@ -8,7 +8,8 @@ from util.controleSGBD import *
 
 print("Iniciando conexao com servidor")
 #colocando o cliente do oracle
-cx_Oracle.init_oracle_client(lib_dir=r"C:\Users\11795634\Desktop\instantclient_21_6")
+#cx_Oracle.init_oracle_client(lib_dir=r"C:\oracle\instantclient_19_9")
+cx_Oracle.init_oracle_client(lib_dir=r"C:\Users\Luisa\Documents\client_BD\instantclient_21_6")
 
 #entrando no sql
 enter_host = cx_Oracle.makedsn(host='orclgrad1.icmc.usp.br', port='1521', service_name='pdb_elaine.icmc.usp.br')
@@ -19,7 +20,8 @@ cursor = enter_user.cursor()
 #TESTE
 #cursor.execute('insert into USUARIO (EMAIL, NOME) values (\'teste@gmail.com\',\'Teste Da Silva\')')
 token = login(cursor)
-
+if(token):
+    main_window(cursor, token)
 
 #commit
 enter_user.commit()

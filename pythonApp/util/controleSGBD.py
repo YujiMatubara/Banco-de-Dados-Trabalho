@@ -1,16 +1,43 @@
 def tentativa_login(cursor, email):
-	"""Tenta encontrar o login no banco de dados"""
-	return cursor.execute(f"select ID from USUARIO where email = '{email}'").fetchall()[0][0]
+	#Tenta encontrar o login no banco de dados
+	sql = """select ID from USUARIO where EMAIL = :userEmail"""
+	print(email)
+	token = cursor.execute(sql, [email]).fetchall()
+	if(token):
+		return token[0][0]
+	else:
+		return 0
 
 def cadastra_login(cursor, username, email):
 	"""Cadastra o login no banco de dados"""
-	cursor.execute(f"insert into USUARIO (EMAIL, NOME) values ('{email}','{username}')")
-	# Cursor execute retorna lista de tuplas
-	return cursor.execute(f"select ID from USUARIO where email = '{email}'").fetchall()[0][0]
+	sql = """insert into USUARIO (EMAIL, NOME) values (:email,:username)"""
+	cursor.execute(sql, [email, username])
+	sql = """select ID from USUARIO where EMAIL = :userEmail"""
+	return cursor.execute(sql, [email]).fetchall()[0][0]
 
 def lista_cursos_usuario(cursor, token):
-	pass
+	sql = """select CURSO.ID, CURSO.TITULO from CURSO join CURSA on CURSO.ID = CURSA.CURSO where CURSA.USUARIO = :userToken"""
+	lista_cursos = cursor.execute(sql, [token]).fetchall()
+	if(lista_cursos):
+		for curso in lista_cursos:
+			print("Nome do curso: " + curso[1] + "\n" + "ID do curso: " + str(curso[0]) + "\n")
+	else:
+		print("Nenhum curso feito/fazendo")
+	return
 
+def pesquisa_cursos(cursor, nome_curso):
+	nome_curso = "%" + nome_curso.upper() + "%"
+	print(nome_curso)
+	sql = """select CURSO.ID, CURSO.TITULO from CURSO where upper(CURSO.TITULO) COLLATE LATIN_AI like :nome_curso"""
+	lista_cursos = cursor.execute(sql, [nome_curso]).fetchall()
+	if(lista_cursos):
+		for curso in lista_cursos:
+			print("Nome do curso: " + curso[1] + "\n" + "ID do curso: " + str(curso[0]) + "\n")
+	else:
+		print("Nenhum curso encontrado")
+	return
+
+"""
 class FiltroCurso:
 	def __init__(titulo=None, tema=None, subtema=None, avaliacao=None):
 		self.tituo = titulo.upper()
@@ -34,13 +61,4 @@ class FiltroCurso:
 			return ""
 		else:
 			return "where " + " and ".join(clausulas)
-
-
-
-
-
-
-def busca_cursos(cursor, filtro_curso):
-	"""Busca por cursos usando tema e subtema"""
-
-	pass
+"""
