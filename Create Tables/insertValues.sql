@@ -288,9 +288,9 @@ WHERE U.NOME = 'Lucas Matos'));
 INSERT INTO COMENTARIO
 (THREAD, USUARIO, DATA_HORA_PUBLICACAO, COMENTARIO)
 VALUES
-(SELECT T.ID 
+((SELECT T.ID 
 FROM THREAD T, CURSO C
-WHERE C.TITULO = 'Cálculo 1' AND T.TITULO = C.TITULO AND C.DATA_LANCAMENTO = TO_DATE('2017/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
+WHERE C.TITULO = 'Cálculo 1' AND T.CURSO = C.ID AND C.DATA_LANCAMENTO = TO_DATE('2017/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
 (SELECT U.ID 
 FROM USUARIO U
 WHERE U.NOME = 'Lucas Matos'),
@@ -300,29 +300,47 @@ TO_DATE('2021/07/24 11:32:11', 'YYYY/MM/DD HH24:MI:SS'),
 INSERT INTO COMENTARIO
 (THREAD, USUARIO, DATA_HORA_PUBLICACAO, COMENTARIO)
 VALUES
-(9, 21, TO_DATE('2021/07/24 12:22:23', 'YYYY/MM/DD HH24:MI:SS'), 'Combinado');
+((SELECT T.ID 
+FROM THREAD T, CURSO C
+WHERE C.TITULO = 'Cálculo 1' AND T.CURSO = C.ID AND C.DATA_LANCAMENTO = TO_DATE('2017/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
+(SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Laura Matiolli'),
+TO_DATE('2021/07/24 12:22:23', 'YYYY/MM/DD HH24:MI:SS'), 'Combinado');
 
 --------------------------------------------------------------------------------
 INSERT INTO CURSO_MIDIA
 (CURSO, MIDIA)
 VALUES
-(2, 'texto');
+((SELECT C.ID 
+FROM CURSO C
+WHERE C.TITULO = 'Cálculo 1' AND C.DATA_LANCAMENTO = TO_DATE('2017/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
+'texto');
 
 INSERT INTO CURSO_MIDIA
 (CURSO, MIDIA)
 VALUES
-(2, 'vídeo');
+((SELECT C.ID 
+FROM CURSO C
+WHERE C.TITULO = 'Cálculo 1' AND C.DATA_LANCAMENTO = TO_DATE('2017/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
+'vídeo');
 
 --------------------------------------------------------------------------------
 INSERT INTO CURSO_LINK
 (CURSO, URL, PLATAFORMA)
 VALUES
-(2, 'https://pt.khanacademy.org/math/ap-calculus-ab/ab-limits-new/ab-1-8/v/squeeze-sandwich-theorem', 'Khan Academy');
+((SELECT C.ID 
+FROM CURSO C
+WHERE C.TITULO = 'Cálculo 1' AND C.DATA_LANCAMENTO = TO_DATE('2017/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
+'https://pt.khanacademy.org/math/ap-calculus-ab/ab-limits-new/ab-1-8/v/squeeze-sandwich-theorem', 'Khan Academy');
 
 INSERT INTO CURSO_LINK
 (CURSO, URL, PLATAFORMA)
 VALUES
-(28, 'https://www.youtube.com/watch?v=7cmoWUv0ysE&ab_channel=PabloJamilk', 'Youtube');
+((SELECT C.ID 
+FROM CURSO C
+WHERE C.TITULO = 'Matemática para computeiro' AND C.DATA_LANCAMENTO = TO_DATE('2020/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
+'https://www.youtube.com/watch?v=7cmoWUv0ysEab_channel=PabloJamilk', 'Youtube');
 
 --------------------------------------------------------------------------------
 INSERT INTO AMIZADE
