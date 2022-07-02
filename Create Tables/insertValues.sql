@@ -342,16 +342,206 @@ FROM CURSO C
 WHERE C.TITULO = 'Matemática para computeiro' AND C.DATA_LANCAMENTO = TO_DATE('2020/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
 'https://www.youtube.com/watch?v=7cmoWUv0ysEab_channel=PabloJamilk', 'Youtube');
 
+INSERT INTO CURSO_LINK
+(CURSO, URL, PLATAFORMA)
+VALUES
+(SELECT C.ID 
+FROM CURSO C
+WHERE C.TITULO = 'Matemática para computeiro'), 'https://pt.khanacademy.org/math/ap-calculus-ab/ab-limits-new/ab-1-8/v/squeeze-sandwich-theorem', 'Khan Academy');
+
+INSERT INTO CURSO_LINK
+(CURSO, URL, PLATAFORMA)
+VALUES
+((SELECT C.ID 
+FROM CURSO C
+WHERE C.TITULO = 'Português, ETEC, 2022, 1 Ano, 1º Semestre'), 'https://www.youtube.com/watch?v=7cmoWUv0ysE&ab_channel=PabloJamilk', 'Youtube');
+
+INSERT INTO CURSO_LINK
+(CURSO, URL, PLATAFORMA)
+VALUES
+((SELECT C.ID 
+FROM CURSO C
+WHERE C.TITULO = 'Cálculo 1'), 'https://www.youtube.com/watch?v=Utj5xUmUEvk&list=PLxI8Can9yAHdCutIIiKca1wrkuRLvBhHs', 'Youtube');
+
+INSERT INTO CURSO_LINK
+(CURSO, URL, PLATAFORMA)
+VALUES
+((SELECT C.ID 
+FROM CURSO C
+WHERE C.TITULO = 'Cálculo 2'), 'https://www.youtube.com/watch?v=wIXCb0_iVrc&list=PLxI8Can9yAHfo-IWbd4FZ1sIPuemagUID', 'Youtube');
+
+INSERT INTO CURSO_LINK
+(CURSO, URL, PLATAFORMA)
+VALUES
+((SELECT C.ID 
+FROM CURSO C
+WHERE C.TITULO = 'Cálculo 3'), 'https://www.youtube.com/watch?v=8mBTfk7s63s&list=PLAudUnJeNg4ugGUJo52dtgFZ_tCm1Ds5W', 'Youtube');
+
+INSERT INTO CURSO_LINK
+(CURSO, URL, PLATAFORMA)
+VALUES
+((SELECT C.ID 
+FROM CURSO C
+WHERE C.TITULO = 'Cálculo 4'), 'https://www.youtube.com/watch?v=qSt79dDjOeU&list=PLAudUnJeNg4ssEeZCZ0BOgwflysb7UZmX', 'Youtube');
+
+INSERT INTO CURSO_LINK
+(CURSO, URL, PLATAFORMA)
+VALUES
+((SELECT C.ID 
+FROM CURSO C
+WHERE C.TITULO = 'Álgebra Linear'), 'https://www.youtube.com/watch?v=-JcQJFNVjaA&list=PLIEzh1OveCVczEZAjhVIVd7Qs-X8ILgnI', 'Youtube');
+
+INSERT INTO CURSO_LINK
+(CURSO, URL, PLATAFORMA)
+VALUES
+((SELECT C.ID 
+FROM CURSO C
+WHERE C.TITULO = 'Cálculo Numérico'), 'https://www.youtube.com/watch?v=3jTueAA6Fhw&list=PLsfUsqON-YybXUTyvm_xy8J8VpHRvpG_z', 'Youtube');
+
 --------------------------------------------------------------------------------
 INSERT INTO AMIZADE
 (USUARIO, AMIGO, DATA_INICIO_AMIZADE)
 VALUES
-(21, 22, TO_DATE('2020/10/13 16:52:45', 'YYYY/MM/DD HH24:MI:SS'));
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Luisa Balleroni'), (SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Matheus Bermudes Viana'), TO_DATE('2020/10/13 16:52:45', 'YYYY/MM/DD HH24:MI:SS'));
 
 INSERT INTO AMIZADE
 (USUARIO, AMIGO, DATA_INICIO_AMIZADE)
 VALUES
-(21, 27, TO_DATE('2020/10/13 16:55:34', 'YYYY/MM/DD HH24:MI:SS'));
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Matheus Bermudes Viana'), (SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Luisa Balleroni'), TO_DATE('2020/10/13 16:52:45', 'YYYY/MM/DD HH24:MI:SS'));
+
+INSERT INTO AMIZADE
+(USUARIO, AMIGO, DATA_INICIO_AMIZADE)
+VALUES
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Luisa Balleroni'), (SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Laura Matiolli'), TO_DATE('2020/10/13 16:55:34', 'YYYY/MM/DD HH24:MI:SS'));
+
+INSERT INTO AMIZADE
+(USUARIO, AMIGO, DATA_INICIO_AMIZADE)
+VALUES
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Laura Matiolli'), (SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Luisa Balleroni'), TO_DATE('2020/10/13 16:55:34', 'YYYY/MM/DD HH24:MI:SS'));
+
+INSERT INTO AMIZADE
+(USUARIO, AMIGO, DATA_INICIO_AMIZADE)
+VALUES
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Luisa Balleroni'), (SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Camila Pigato Sakuraba'), TO_DATE('2020/10/13 16:55:34', 'YYYY/MM/DD HH24:MI:SS'));
+
+INSERT INTO AMIZADE
+(USUARIO, AMIGO, DATA_INICIO_AMIZADE)
+VALUES
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Camila Pigato Sakuraba'), (SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Luisa Balleroni'), TO_DATE('2020/10/13 16:55:34', 'YYYY/MM/DD HH24:MI:SS'));
+
+INSERT INTO AMIZADE
+(USUARIO, AMIGO, DATA_INICIO_AMIZADE)
+VALUES
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Luisa Balleroni'), (SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Vinicius Guedes'), TO_DATE('2020/10/13 16:55:34', 'YYYY/MM/DD HH24:MI:SS'));
+
+INSERT INTO AMIZADE
+(USUARIO, AMIGO, DATA_INICIO_AMIZADE)
+VALUES
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Vinicius Guedes'), (SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Luisa Balleroni'), TO_DATE('2020/10/13 16:55:34', 'YYYY/MM/DD HH24:MI:SS'));
+
+INSERT INTO AMIZADE
+(USUARIO, AMIGO, DATA_INICIO_AMIZADE)
+VALUES
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Luisa Balleroni'), (SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Caue Trevelin'), TO_DATE('2020/10/13 16:55:34', 'YYYY/MM/DD HH24:MI:SS'));
+
+INSERT INTO AMIZADE
+(USUARIO, AMIGO, DATA_INICIO_AMIZADE)
+VALUES
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Caue Trevelin'), (SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Luisa Balleroni'), TO_DATE('2020/10/13 16:55:34', 'YYYY/MM/DD HH24:MI:SS'));
+
+INSERT INTO AMIZADE
+(USUARIO, AMIGO, DATA_INICIO_AMIZADE)
+VALUES
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Luisa Balleroni'), (SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Aline Ventura'), TO_DATE('2020/10/13 16:55:34', 'YYYY/MM/DD HH24:MI:SS'));
+
+INSERT INTO AMIZADE
+(USUARIO, AMIGO, DATA_INICIO_AMIZADE)
+VALUES
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Aline Ventura'), (SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Luisa Balleroni'), TO_DATE('2020/10/13 16:55:34', 'YYYY/MM/DD HH24:MI:SS'));
+
+INSERT INTO AMIZADE
+(USUARIO, AMIGO, DATA_INICIO_AMIZADE)
+VALUES
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Luisa Balleroni'), (SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Nicole Iacobacci'), TO_DATE('2020/10/13 16:55:34', 'YYYY/MM/DD HH24:MI:SS'));
+
+INSERT INTO AMIZADE
+(USUARIO, AMIGO, DATA_INICIO_AMIZADE)
+VALUES
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Nicole Iacobacci'), (SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Luisa Balleroni'), TO_DATE('2020/10/13 16:55:34', 'YYYY/MM/DD HH24:MI:SS'));
+
+INSERT INTO AMIZADE
+(USUARIO, AMIGO, DATA_INICIO_AMIZADE)
+VALUES
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Luisa Balleroni'), (SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Fernando Yutaka'), TO_DATE('2020/10/13 16:55:34', 'YYYY/MM/DD HH24:MI:SS'));
+
+INSERT INTO AMIZADE
+(USUARIO, AMIGO, DATA_INICIO_AMIZADE)
+VALUES
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Fernando Yutaka'), (SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Luisa Balleroni'), TO_DATE('2020/10/13 16:55:34', 'YYYY/MM/DD HH24:MI:SS'));
 
 --------------------------------------------------------------------------------
 INSERT INTO SUPORTE
@@ -372,24 +562,12 @@ WHERE U.NOME = 'Vinicius Guedes'), TO_DATE('2021/11/23 18:35:29', 'YYYY/MM/DD HH
 INSERT INTO CURSA
 (USUARIO, CURSO, PROGRESSO, AVALIACAO, COMENTARIO, ANOTACOES_PESSOAIS)
 VALUES
-((SELECT U.ID 
-FROM USUARIO U
-WHERE U.NOME = 'Vinicius Guedes'),
-(SELECT C.ID 
-FROM CURSO C
-WHERE C.TITULO = 'Matemática para computeiro' AND C.DATA_LANCAMENTO = TO_DATE('2020/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
-'EM ANDAMENTO', 0, 'Sobre a aula 1', 'O teorema do sanduiche explica como uma função que está sempre no meio de outras duas pode ter limite quando os pontos são iguais na f(x).');
+(27, 2, 'EM ANDAMENTO', 0, 'Sobre a aula 1', 'O teorema do sanduiche explica como uma função que está sempre no meio de outras duas pode ter limite quando os pontos são iguais na f(x).');
 
 INSERT INTO CURSA
 (USUARIO, CURSO, PROGRESSO, AVALIACAO, COMENTARIO, ANOTACOES_PESSOAIS)
 VALUES
-((SELECT U.ID 
-FROM USUARIO U
-WHERE U.NOME = 'Lucas Yuji Matubara'),
-(SELECT C.ID 
-FROM CURSO C
-WHERE C.TITULO = 'Cálculo 1' AND C.DATA_LANCAMENTO = TO_DATE('2017/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
-'EM ANDAMENTO', 2, 'Estudar', 'Fazer mais exercícios de combinatória.');
+(27, 27, 'EM ANDAMENTO', 2, 'Estudar', 'Fazer mais exercícios de combinatória.');
 
 --------------------------------------------------------------------------------
 INSERT INTO PALESTRANTE_ESPECIALIZACAO
