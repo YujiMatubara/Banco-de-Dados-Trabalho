@@ -151,7 +151,10 @@ INSERT INTO CONQUISTAS
 VALUES
 ('Disciplinado', 'Prata');
 
-
+INSERT INTO CONQUISTAS
+(NOME, NIVEL)
+VALUES
+('Valeu o esforço', 'Diamante');
 
 --------------------------------------------------------------------------------
 INSERT INTO CONQUISTA_REQUISITO
@@ -179,11 +182,15 @@ INSERT INTO CONQUISTA_REQUISITO
 VALUES
 ('Grupo de Estudos', 'Fez 10 amigos.');
 
-
 INSERT INTO CONQUISTA_REQUISITO
 (NOME, DESCRICAO_REQUISITO)
 VALUES
 ('Compartilhando conhecimento', 'Compartilhou o link do site com os amigos.');
+
+INSERT INTO CONQUISTA_REQUISITO
+(NOME, DESCRICAO_REQUISITO)
+VALUES
+('Valeu o esforço', 'Concluiu 50 cursos.');
 
 --------------------------------------------------------------------------------
 INSERT INTO DESBLOQUEIA_CONQUISTA
