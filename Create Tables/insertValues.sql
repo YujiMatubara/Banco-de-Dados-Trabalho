@@ -131,6 +131,26 @@ INSERT INTO CONQUISTAS
 VALUES
 ('Email verificado', 'Bronze');
 
+INSERT INTO CONQUISTAS
+(NOME, NIVEL)
+VALUES
+('Compartilhando conhecimento', 'Bronze');
+
+INSERT INTO CONQUISTAS
+(NOME, NIVEL)
+VALUES
+('Grupo de Estudos', 'Prata');
+
+INSERT INTO CONQUISTAS
+(NOME, NIVEL)
+VALUES
+('Comentarista', 'Prata');
+
+INSERT INTO CONQUISTAS
+(NOME, NIVEL)
+VALUES
+('Disciplinado', 'Prata');
+
 --------------------------------------------------------------------------------
 INSERT INTO CONQUISTA_REQUISITO
 (NOME, DESCRICAO_REQUISITO)
@@ -141,6 +161,27 @@ INSERT INTO CONQUISTA_REQUISITO
 (NOME, DESCRICAO_REQUISITO)
 VALUES
 ('Email verificado', 'Verificar o e-mail da conta criada.');
+
+INSERT INTO CONQUISTA_REQUISITO
+(NOME, DESCRICAO_REQUISITO)
+VALUES
+('Disciplinado', 'Assistiu 10 aulas diferentes.');
+
+INSERT INTO CONQUISTA_REQUISITO
+(NOME, DESCRICAO_REQUISITO)
+VALUES
+('Comentarista', 'Comentou em 10 threads diferentes.');
+
+INSERT INTO CONQUISTA_REQUISITO
+(NOME, DESCRICAO_REQUISITO)
+VALUES
+('Grupo de Estudos', 'Fez 10 amigos.');
+
+
+INSERT INTO CONQUISTA_REQUISITO
+(NOME, DESCRICAO_REQUISITO)
+VALUES
+('Compartilhando conhecimento', 'Compartilhou o link do site com os amigos.');
 
 --------------------------------------------------------------------------------
 INSERT INTO DESBLOQUEIA_CONQUISTA
