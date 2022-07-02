@@ -357,12 +357,16 @@ VALUES
 INSERT INTO SUPORTE
 (USUARIO, DATA_HORA, MENSAGEM, RESPOSTA)
 VALUES
-(22, TO_DATE('2022/05/21 08:55:42', 'YYYY/MM/DD HH24:MI:SS'), 'Olá', 'Olá');
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Lucas Matos'), TO_DATE('2022/05/21 08:55:42', 'YYYY/MM/DD HH24:MI:SS'), 'Olá', 'Olá');
 
 INSERT INTO SUPORTE
 (USUARIO, DATA_HORA, MENSAGEM, RESPOSTA)
 VALUES
-(22, TO_DATE('2021/11/23 18:35:29', 'YYYY/MM/DD HH24:MI:SS'), 'Preciso de ajuda!', NULL);
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Vinicius Guedes'), TO_DATE('2021/11/23 18:35:29', 'YYYY/MM/DD HH24:MI:SS'), 'Preciso de ajuda!', NULL);
 
 --------------------------------------------------------------------------------
 INSERT INTO CURSA
