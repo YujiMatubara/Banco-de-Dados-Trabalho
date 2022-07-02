@@ -174,6 +174,11 @@ VALUES
 INSERT INTO CONQUISTAS
 (NOME, NIVEL)
 VALUES
+('Fã de vídeo aula', 'Platina');
+
+INSERT INTO CONQUISTAS
+(NOME, NIVEL)
+VALUES
 ('Sala de aula', 'Ouro');
 
 --------------------------------------------------------------------------------
@@ -226,6 +231,11 @@ INSERT INTO CONQUISTAS
 (NOME, NIVEL)
 VALUES
 ('Mestre das especializações', 'Concluir 5 cursos de um mesmo tema.');
+
+INSERT INTO CONQUISTAS
+(NOME, NIVEL)
+VALUES
+('Fã de vídeo aula', 'Concluir 30 cursos.');
 
 INSERT INTO CONQUISTAS
 (NOME, NIVEL)
