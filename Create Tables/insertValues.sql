@@ -747,4 +747,24 @@ FROM COMENTARIO C
 WHERE C.COMENTARIO = 'Também quero'));
 
 --------------------------------------------------------------------------------
+INSERT INTO QUIZ_PERGUNTAS
+(ID, QUESTAO, RESPOSTA, ALTERNATIVA_A, ALTERNATIVA_B, ALTERNATIVA_C, ALTERNATIVA_D, ALTERNATIVA_E)
+VALUES
+((SELECT Q.ID
+FROM QUIZ Q
+WHERE Q.NIVEL = 'PRATA' AND Q.TEMA = 'Matemática' AND Q.SUB_TEMA = 'Cálculo'),
+'Uma solução estoque de hidróxido de potássio (KOH) foi preparada pela dissolução de 5,6 g do soluto em água, obtendo-se, ao final, 200 mL. Posteriormente, um certo volume dessa solução foi diluído em 400 mL, obtendo-se uma nova solução de concentração igual a 0,30 mol.L–1. Determine o valor desse volume da solução estoque que foi diluído em 400 mL.',
+'C', '255', '250', '240', '245', '290');
+
+INSERT INTO QUIZ_PERGUNTAS
+(ID, QUESTAO, RESPOSTA, ALTERNATIVA_A, ALTERNATIVA_B, ALTERNATIVA_C, ALTERNATIVA_D, ALTERNATIVA_E)
+VALUES
+((SELECT Q.ID
+FROM QUIZ Q
+WHERE Q.NIVEL = 'PRATA' AND Q.TEMA = 'Matemática' AND Q.SUB_TEMA = 'Cálculo'),
+'Assinale a alternativa que corresponde ao volume de água que foi adicionado a 800 mL de uma solução aquosa de sulfito de lítio, com 0,80 mol/L, para obter uma solução de 0,34 mol/L desse sal.',
+'D', '1282 mL', '1182 mL', '1100 mL', '1082 mL', '1200 mL');
+
+--------------------------------------------------------------------------------
+--INSERT INTO ATUALIZA_CURSO
 commit;
