@@ -156,6 +156,26 @@ INSERT INTO CONQUISTAS
 VALUES
 ('Valeu o esforço', 'Diamante');
 
+INSERT INTO CONQUISTAS
+(NOME, NIVEL)
+VALUES
+('Curso concluido', 'Prata');
+
+INSERT INTO CONQUISTAS
+(NOME, NIVEL)
+VALUES
+('Quiz gabaritado', 'Prata');
+
+INSERT INTO CONQUISTAS
+(NOME, NIVEL)
+VALUES
+('Mestre das especializações', 'Platina');
+
+INSERT INTO CONQUISTAS
+(NOME, NIVEL)
+VALUES
+('Sala de aula', 'Ouro');
+
 --------------------------------------------------------------------------------
 INSERT INTO CONQUISTA_REQUISITO
 (NOME, DESCRICAO_REQUISITO)
@@ -191,6 +211,26 @@ INSERT INTO CONQUISTA_REQUISITO
 (NOME, DESCRICAO_REQUISITO)
 VALUES
 ('Valeu o esforço', 'Concluiu 50 cursos.');
+
+INSERT INTO CONQUISTA_REQUISITO
+(NOME, DESCRICAO_REQUISITO)
+VALUES
+('Curso concluido', 'Concluir um curso.');
+
+INSERT INTO CONQUISTAS
+(NOME, NIVEL)
+VALUES
+('Quiz gabaritado', 'Acertar todas as questões de um quiz.');
+
+INSERT INTO CONQUISTAS
+(NOME, NIVEL)
+VALUES
+('Mestre das especializações', 'Concluir 5 cursos de um mesmo tema.');
+
+INSERT INTO CONQUISTAS
+(NOME, NIVEL)
+VALUES
+('Sala de aula', 'Fazer 50 amigos na plataforma.');
 
 --------------------------------------------------------------------------------
 INSERT INTO DESBLOQUEIA_CONQUISTA
