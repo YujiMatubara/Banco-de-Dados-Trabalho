@@ -148,39 +148,41 @@ INSERT INTO DESBLOQUEIA_CONQUISTA
 VALUES
 ('Conta criada', (SELECT U.ID 
 FROM USUARIO U
-WHERE NOME = 'Lucas Yuji Matubara'));
+WHERE U.NOME = 'Lucas Yuji Matubara'));
 
 INSERT INTO DESBLOQUEIA_CONQUISTA
 (NOME_CONQUISTA, USUARIO)
 VALUES
 ('Conta criada', (SELECT U.ID 
 FROM USUARIO U
-WHERE NOME = 'Wictor Dalbosco Silva'));
+WHERE U.NOME = 'Wictor Dalbosco Silva'));
 
 INSERT INTO DESBLOQUEIA_CONQUISTA
 (NOME_CONQUISTA, USUARIO)
 VALUES
 ('Conta criada', (SELECT U.ID 
 FROM USUARIO U
-WHERE NOME = 'Pedro Henrique'));
+WHERE U.NOME = 'Pedro Henrique'));
 
 INSERT INTO DESBLOQUEIA_CONQUISTA
 (NOME_CONQUISTA, USUARIO)
 VALUES
 ('Conta criada', (SELECT U.ID 
 FROM USUARIO U
-WHERE NOME = 'Luisa Balleroni'));
+WHERE U.NOME = 'Luisa Balleroni'));
 
 --------------------------------------------------------------------------------
 INSERT INTO CURADOR
 (ID)
-VALUES
-(21);
+SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Luisa Balleroni';
 
 INSERT INTO CURADOR
 (ID)
-VALUES
-(25);
+SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Pedro Henrique';
 
 --------------------------------------------------------------------------------
 INSERT INTO PALESTRANTE
@@ -202,18 +204,30 @@ VALUES
 INSERT INTO ATUALIZA_PALESTRANTE
 (CURADOR, PALESTRANTE, DATA_HORA_ATUALIZACAO)
 VALUES
-(21, 21, TO_DATE('2020/04/14 16:24:02', 'YYYY/MM/DD HH24:MI:SS'));
+((SELECT C.ID 
+FROM CURADOR C, USUARIO U
+WHERE C.ID = U.ID AND U.NOME = 'Luisa Balleroni'), 
+(SELECT P.ID 
+FROM PALESTRANTE P
+WHERE NOME = 'Farid Tari'),
+TO_DATE('2020/04/14 16:24:02', 'YYYY/MM/DD HH24:MI:SS'));
 
 INSERT INTO ATUALIZA_PALESTRANTE
 (CURADOR, PALESTRANTE, DATA_HORA_ATUALIZACAO)
 VALUES
-(21, 22, TO_DATE('2021/03/23 18:03:15', 'YYYY/MM/DD HH24:MI:SS'));
+((SELECT C.ID 
+FROM CURADOR C, USUARIO U
+WHERE C.ID = U.ID AND U.NOME = 'Pedro Henrique'), 
+(SELECT P.ID 
+FROM PALESTRANTE P
+WHERE NOME = 'João Batista'),
+TO_DATE('2020/04/14 16:24:02', 'YYYY/MM/DD HH24:MI:SS'));
 
 --------------------------------------------------------------------------------
 INSERT INTO QUIZ
 (NIVEL, TEMA, SUB_TEMA)
 VALUES
-('PRATA', 'Calculo', 'Teorema do Sanduiche');
+('PRATA', 'Matemática', 'Cálculo');
 
 INSERT INTO QUIZ
 (NIVEL, TEMA, SUB_TEMA)
@@ -229,12 +243,22 @@ VALUES
 INSERT INTO RESPONDE_QUIZ
 (USUARIO, QUIZ, PONTOS)
 VALUES
-(25, 3, 100);
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Wictor Dalbosco Silva'), 
+(SELECT Q.ID 
+FROM QUIZ Q
+WHERE Q.NIVEL = 'PRATA' AND Q.TEMA = 'Matemática' AND Q.SUB_TEMA = 'Cálculo'), 100);
 
 INSERT INTO RESPONDE_QUIZ
 (USUARIO, QUIZ, PONTOS)
 VALUES
-(27, 5, 92);
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Matheus Bermudes Viana'), 
+(SELECT Q.ID 
+FROM QUIZ Q
+WHERE Q.NIVEL = 'BRONZE' AND Q.TEMA = 'Matemática' AND Q.SUB_TEMA = 'Discreta'), 100);
 
 --------------------------------------------------------------------------------
 INSERT INTO THREAD
