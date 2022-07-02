@@ -264,18 +264,38 @@ WHERE Q.NIVEL = 'BRONZE' AND Q.TEMA = 'Matemática' AND Q.SUB_TEMA = 'Discreta')
 INSERT INTO THREAD
 (TITULO, CURSO, ASSUNTO, USUARIO)
 VALUES
-('Questionário', 27, 'Exercício 5', 21);
+('Questionário', 
+(SELECT C.ID 
+FROM CURSO C
+WHERE C.TITULO = 'Matemática para computeiro' AND C.DATA_LANCAMENTO = TO_DATE('2020/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
+'Exercício 5',
+(SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Matheus Bermudes Viana'));
 
 INSERT INTO THREAD
 (TITULO, CURSO, ASSUNTO, USUARIO)
 VALUES
-('Revisão Prova', 28, 'Questão 2', 27);
-
+('Questionário', 
+(SELECT C.ID 
+FROM CURSO C
+WHERE C.TITULO = 'Cálculo 1' AND C.DATA_LANCAMENTO = TO_DATE('2017/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
+'Exercício 5',
+(SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Lucas Matos'));
 --------------------------------------------------------------------------------
 INSERT INTO COMENTARIO
 (THREAD, USUARIO, DATA_HORA_PUBLICACAO, COMENTARIO)
 VALUES
-(9, 29, TO_DATE('2021/07/24 11:32:11', 'YYYY/MM/DD HH24:MI:SS'), 'Te passo a resolução na próxima aula');
+(SELECT T.ID 
+FROM THREAD T, CURSO C
+WHERE C.TITULO = 'Cálculo 1' AND T.TITULO = C.TITULO AND C.DATA_LANCAMENTO = TO_DATE('2017/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
+(SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Lucas Matos'),
+TO_DATE('2021/07/24 11:32:11', 'YYYY/MM/DD HH24:MI:SS'),
+'Te passo a resolução na próxima aula');
 
 INSERT INTO COMENTARIO
 (THREAD, USUARIO, DATA_HORA_PUBLICACAO, COMENTARIO)
