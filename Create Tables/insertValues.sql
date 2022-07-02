@@ -562,12 +562,24 @@ WHERE U.NOME = 'Vinicius Guedes'), TO_DATE('2021/11/23 18:35:29', 'YYYY/MM/DD HH
 INSERT INTO CURSA
 (USUARIO, CURSO, PROGRESSO, AVALIACAO, COMENTARIO, ANOTACOES_PESSOAIS)
 VALUES
-(27, 2, 'EM ANDAMENTO', 0, 'Sobre a aula 1', 'O teorema do sanduiche explica como uma função que está sempre no meio de outras duas pode ter limite quando os pontos são iguais na f(x).');
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Vinicius Guedes'),
+(SELECT C.ID 
+FROM CURSO C
+WHERE C.TITULO = 'Matemática para computeiro' AND C.DATA_LANCAMENTO = TO_DATE('2020/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
+'EM ANDAMENTO', 0, 'Sobre a aula 1', 'O teorema do sanduiche explica como uma função que está sempre no meio de outras duas pode ter limite quando os pontos são iguais na f(x).');
 
 INSERT INTO CURSA
 (USUARIO, CURSO, PROGRESSO, AVALIACAO, COMENTARIO, ANOTACOES_PESSOAIS)
 VALUES
-(27, 27, 'EM ANDAMENTO', 2, 'Estudar', 'Fazer mais exercícios de combinatória.');
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Lucas Yuji Matubara'),
+(SELECT C.ID 
+FROM CURSO C
+WHERE C.TITULO = 'Cálculo 1' AND C.DATA_LANCAMENTO = TO_DATE('2017/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
+'EM ANDAMENTO', 2, 'Estudar', 'Fazer mais exercícios de combinatória.');
 
 --------------------------------------------------------------------------------
 INSERT INTO PALESTRANTE_ESPECIALIZACAO
