@@ -435,20 +435,6 @@ WHERE C.TITULO = 'Matemática para computeiro' AND C.DATA_LANCAMENTO = TO_DATE('
 INSERT INTO CURSO_LINK
 (CURSO, URL, PLATAFORMA)
 VALUES
-(SELECT C.ID 
-FROM CURSO C
-WHERE C.TITULO = 'Matemática para computeiro'), 'https://pt.khanacademy.org/math/ap-calculus-ab/ab-limits-new/ab-1-8/v/squeeze-sandwich-theorem', 'Khan Academy');
-
-INSERT INTO CURSO_LINK
-(CURSO, URL, PLATAFORMA)
-VALUES
-((SELECT C.ID 
-FROM CURSO C
-WHERE C.TITULO = 'Português, ETEC, 2022, 1 Ano, 1º Semestre'), 'https://www.youtube.com/watch?v=7cmoWUv0ysE&ab_channel=PabloJamilk', 'Youtube');
-
-INSERT INTO CURSO_LINK
-(CURSO, URL, PLATAFORMA)
-VALUES
 ((SELECT C.ID 
 FROM CURSO C
 WHERE C.TITULO = 'Cálculo 1'), 'https://www.youtube.com/watch?v=Utj5xUmUEvk&list=PLxI8Can9yAHdCutIIiKca1wrkuRLvBhHs', 'Youtube');
