@@ -1,46 +1,4 @@
-create table USUARIO (
-    
-    --Atributos
-    ID number generated always as identity,
-    EMAIL varchar2(255) not null,
-    NOME varchar2(100) not null,
-    NIVEL_DE_PRIVILEGIO char default '0' not null,
-    NIVEL_DE_CONQUISTA number(4) default 0 not null,
-    
-    --Constraints básicas
-    constraint EMAIL_UNIQUE unique(EMAIL),
-    constraint PK_USUARIO primary key(ID),
-    
-    --Constraints de checagem
-    constraint NIVEL_PRIV_CONSTRAINT check (NIVEL_DE_PRIVILEGIO in ('1', '0'))
-);
-
-create table CURSO (
-    
-    --Atributos
-    ID number generated always as identity,
-    TITULO varchar2(100) not null,
-    DATA_LANCAMENTO date not null,
-    TEMA varchar2(50) not null,
-    SUB_TEMA varchar2(50) not null,
-    PRECO number(5) default 0,
-    NRO_AULAS number(4),
-    IDIOMA varchar2(20),
-    DURACAO varchar2(50),
-    SOMA_AVALIACAO number(7) default 0,
-    QTD_AVALIACAO number(7) default 0,
-    
-    --Constraints básicas
-    constraint PK_CURSO primary key(ID),
-    constraint SK_CURSO unique(TITULO, DATA_LANCAMENTO),
-    --NÃO APAGAR ASSUNTOS
-    constraint FK_CURSO foreign key(TEMA, SUB_TEMA) references ASSUNTO(TEMA, SUB_TEMA),
-    
-    --Constraints de checagem
-    constraint CK_NRO_AULAS check(NRO_AULAS > 0),
-    constraint CK_PRECO check(PRECO >= 0)
-);
-
+--criar nessa ordem por dependência de chaves estrangeiras
 CREATE TABLE ASSUNTO (
     
     --Atributos
@@ -67,107 +25,109 @@ CREATE TABLE CONQUISTAS (
     CONSTRAINT CK_NIVEL_CONQUISTA CHECK (UPPER(NIVEL) IN ('BRONZE', 'PRATA', 'OURO', 'PLATINA', 'DIAMANTE'))
 );
 
-CREATE TABLE CONQUISTA_REQUISITO (
+CREATE TABLE PALESTRANTE (
     
     --Atributos
-    NOME VARCHAR2(30),
-    DESCRICAO_REQUISITO VARCHAR2(500),
+    ID number generated always as identity,
+    NOME varchar2(100) not null,
+    
+    --Constraints básicas
+    constraint PK_PALESTRANTE primary key(ID)
+);
+
+CREATE TABLE PALESTRANTE_ESPECIALIZACAO (
+    
+    --Atributos
+    PALESTRANTE number,
+    ESPECIALIZACAO varchar2(50),
+    
+    --Constraints básicas
+    constraint PK_PALESTRANTE_ESPECIALIZACAO primary key(PALESTRANTE, ESPECIALIZACAO),
+    constraint FK_PALESTRANTE_ESPECIALIZACAO foreign key(PALESTRANTE) references PALESTRANTE(ID) ON DELETE CASCADE
+);
+
+CREATE TABLE QUIZ (
+    
+    --Atributos
+    ID number generated always as identity,
+    NIVEL varchar2(8),
+    TEMA varchar2(50),
+    SUB_TEMA varchar2(50),
+        
+    --Contraints básicas
+    constraint PK_QUIZ primary key (ID),
+    constraint SK_QUIZ unique(NIVEL, TEMA, SUB_TEMA),
+    --NÃO APAGAR ASSUNTOS
+    constraint FK_QUIZ_ASSUNTO foreign key (TEMA, SUB_TEMA) references ASSUNTO(TEMA, SUB_TEMA),
+
+    --Constraint de checagens
+    constraint CK_NIVEL_QUIZ check (NIVEL in ('BRONZE', 'PRATA', 'OURO', 'PLATINA', 'DIAMANTE'))
+);
+
+CREATE TABLE QUIZ_PERGUNTAS(
+    
+    --Atributos
+    ID number generated always as identity,
+    QUESTAO varchar2(1000),
+    RESPOSTA varchar2(1) not null,
+    ALTERNATIVA_A varchar2(500) not null,
+    ALTERNATIVA_B varchar2(500) not null,
+    ALTERNATIVA_C varchar2(500) not null,
+    ALTERNATIVA_D varchar2(500) not null,
+    ALTERNATIVA_E varchar2(500) not null,
     
     --Contraints básicas
-    CONSTRAINT PK_CONQUISTA_REQUISITO PRIMARY KEY (NOME, DESCRICAO_REQUISITO),
-    CONSTRAINT FK_NOME_CONQUISTA_REQUISITO FOREIGN KEY (NOME) REFERENCES CONQUISTAS (NOME) ON DELETE CASCADE
-); 
-
--- on delete cascade pq não faz sentido desbloquear uma conquista sem um usuário ou conquista específica associado a ela
- CREATE TABLE DESBLOQUEIA_CONQUISTA (
+    constraint PK_QUIZ_PERGUNTAS primary key(ID, QUESTAO),
+    constraint FK_QUIZ_PERGUNTAS foreign key(ID) references QUIZ on delete cascade,
     
-     --Atributos
-     NOME_CONQUISTA VARCHAR2(30),
-    USUARIO NUMBER,
-    
-    --Constraints básicas
-    CONSTRAINT PK_DESBLOQUEIA_CONQUISTA PRIMARY KEY (NOME_CONQUISTA, USUARIO),
-    CONSTRAINT FK_NOME_CONQUISTA_DESBLOQUEIA_CONQUISTA FOREIGN KEY (NOME_CONQUISTA) REFERENCES CONQUISTAS (NOME) ON DELETE CASCADE,
-    CONSTRAINT FK_USUARIO_DESBLOQUEIA_CONQUISTA FOREIGN KEY (USUARIO) REFERENCES USUARIO (ID) ON DELETE CASCADE
- );
- 
- CREATE TABLE ATUALIZA_PALESTRANTE (
-      
-    --Atributos
-    CURADOR NUMBER,
-    PALESTRANTE NUMBER, 
-    DATA_HORA_ATUALIZACAO DATE,
-    
-    --Constraints básicas  
-    CONSTRAINT PK_ATUALIZA_PALESTRANTE PRIMARY KEY (CURADOR, PALESTRANTE, DATA_HORA_ATUALIZACAO),
-    CONSTRAINT FK_CURADOR_ATUALIZA_PALESTRANTE FOREIGN KEY (CURADOR) REFERENCES CURADOR (ID),
-    CONSTRAINT FK_PALESTRANTE_ATUALIZA_PALESTRANTE FOREIGN KEY (PALESTRANTE) REFERENCES PALESTRANTE (ID) ON DELETE CASCADE
- );
- 
-  CREATE TABLE RESPONDE_QUIZ (
-    
-    --Atributos  
-    USUARIO NUMBER,
-    QUIZ NUMBER,
-    PONTOS NUMBER NOT NULL,
-    
-     --Constraints básicas  
-    CONSTRAINT PK_RESPONDE_QUIZ PRIMARY KEY (USUARIO, QUIZ),
-    CONSTRAINT FK_USUARIO_RESPONDE_QUIZ FOREIGN KEY (USUARIO) REFERENCES USUARIO (ID) ON DELETE CASCADE,
-    CONSTRAINT FK_QUIZ_RESPONDE_QUIZ FOREIGN KEY (QUIZ) REFERENCES QUIZ (ID) ON DELETE CASCADE,
-      
-    --Constraints de checagem 
-    CONSTRAINT CK_PONTOS_RESPONDE_QUIZ CHECK (PONTOS >= 0)
- );
- 
- CREATE TABLE COMENTARIO (
-    
-     --Atributos
-     ID NUMBER GENERATED ALWAYS AS IDENTITY,
-    THREAD NUMBER NOT NULL,
-     
-    --O usuário vai poder ser nulo no sql porquê isso será tratado na aplicação.
-    --Já que, para um comentário ser feito, alguém ter que estar logado.
-    --Não será apagado em cascata porque queremos manter o comentário de um usuário mesmo que o usuário não exista mais
-    --(assim como o reddit faz usando um user "u/deleted")
-    USUARIO NUMBER,
-    DATA_HORA_PUBLICACAO DATE NOT NULL,
-    COMENTARIO VARCHAR2(4000),
-    
-    --Constraints básicas 
-    CONSTRAINT PK_COMENTARIO PRIMARY KEY (ID),
-    CONSTRAINT FK_USUARIO_COMENTARIO FOREIGN KEY (USUARIO) REFERENCES USUARIO (ID),
-    CONSTRAINT FK_THREAD_COMENATRIO FOREIGN KEY (THREAD) REFERENCES THREAD (ID) ON DELETE CASCADE,
-    CONSTRAINT UN_COMENTARIO UNIQUE(THREAD, USUARIO, DATA_HORA_PUBLICACAO)
- );
-
-create table CURSO_MIDIA (
-    
-    --Atributos
-    CURSO number,
-    MIDIA varchar2(64),
-    
-    --Constraints básicas
-    constraint PK_CURSO_MIDIA primary key (CURSO, MIDIA),
-    constraint FK_CURSO_MIDIA foreign key (CURSO) references CURSO(ID)
-        on delete cascade
+    --Constraint de checagens
+    constraint CK_RESPOSTA check(RESPOSTA = 'A' OR RESPOSTA = 'B' OR RESPOSTA = 'C' OR RESPOSTA = 'D' OR RESPOSTA = 'E' )
 );
 
-create table CURSO_LINK (
+CREATE TABLE USUARIO (
     
     --Atributos
-    CURSO number,
-    URL varchar2(2048),
-    PLATAFORMA varchar2(50) not null,
+    ID number generated always as identity,
+    EMAIL varchar2(255) not null,
+    NOME varchar2(100) not null,
+    NIVEL_DE_PRIVILEGIO char default '0' not null,
+    NIVEL_DE_CONQUISTA number(4) default 0 not null,
     
     --Constraints básicas
-    constraint PK_CURSO_LINK primary key (CURSO, URL),
-    constraint FK_CURSO_LINK foreign key (CURSO) references CURSO(ID)
-        on delete cascade,
-    constraint UNIQUE_CURSO_LINK_URL unique(URL)
+    constraint EMAIL_UNIQUE unique(EMAIL),
+    constraint PK_USUARIO primary key(ID),
+    
+    --Constraints de checagem
+    constraint NIVEL_PRIV_CONSTRAINT check (NIVEL_DE_PRIVILEGIO in ('1', '0'))
 );
 
-create table AMIZADE (
+CREATE TABLE CURSO (
+    
+    --Atributos
+    ID number generated always as identity,
+    TITULO varchar2(100) not null,
+    DATA_LANCAMENTO date not null,
+    TEMA varchar2(50) not null,
+    SUB_TEMA varchar2(50) not null,
+    PRECO number(5) default 0,
+    NRO_AULAS number(4),
+    IDIOMA varchar2(20),
+    DURACAO varchar2(50),
+    SOMA_AVALIACAO number(7) default 0,
+    QTD_AVALIACAO number(7) default 0,
+    
+    --Constraints básicas
+    constraint PK_CURSO primary key(ID),
+    constraint SK_CURSO unique(TITULO, DATA_LANCAMENTO),
+    --NÃO APAGAR ASSUNTOS
+    constraint FK_CURSO foreign key(TEMA, SUB_TEMA) references ASSUNTO(TEMA, SUB_TEMA),
+    
+    --Constraints de checagem
+    constraint CK_NRO_AULAS check(NRO_AULAS > 0),
+    constraint CK_PRECO check(PRECO >= 0)
+);
+
+CREATE TABLE AMIZADE (
     
     --Atributos
     USUARIO number,
@@ -182,7 +142,7 @@ create table AMIZADE (
         on delete cascade
 );
 
-create table SUPORTE (
+CREATE TABLE SUPORTE (
     
     --Atributos
     USUARIO number,
@@ -195,7 +155,62 @@ create table SUPORTE (
     constraint FK_SUPORTE_USUARIO foreign key (USUARIO) references USUARIO(ID)
 );
 
-create table CURSA(
+-- on delete cascade pq não faz sentido desbloquear uma conquista sem um usuário ou conquista específica associado a ela
+CREATE TABLE DESBLOQUEIA_CONQUISTA (
+    
+     --Atributos
+    NOME_CONQUISTA VARCHAR2(30),
+    USUARIO NUMBER,
+    
+    --Constraints básicas
+    CONSTRAINT PK_DESBLOQUEIA_CONQUISTA PRIMARY KEY (NOME_CONQUISTA, USUARIO),
+    CONSTRAINT FK_NOME_CONQUISTA_DESBLOQUEIA_CONQUISTA FOREIGN KEY (NOME_CONQUISTA) REFERENCES CONQUISTAS (NOME) ON DELETE CASCADE,
+    CONSTRAINT FK_USUARIO_DESBLOQUEIA_CONQUISTA FOREIGN KEY (USUARIO) REFERENCES USUARIO (ID) ON DELETE CASCADE
+);
+ 
+CREATE TABLE RESPONDE_QUIZ (
+    
+    --Atributos  
+    USUARIO NUMBER,
+    QUIZ NUMBER,
+    PONTOS NUMBER NOT NULL,
+    
+     --Constraints básicas  
+    CONSTRAINT PK_RESPONDE_QUIZ PRIMARY KEY (USUARIO, QUIZ),
+    CONSTRAINT FK_USUARIO_RESPONDE_QUIZ FOREIGN KEY (USUARIO) REFERENCES USUARIO (ID) ON DELETE CASCADE,
+    CONSTRAINT FK_QUIZ_RESPONDE_QUIZ FOREIGN KEY (QUIZ) REFERENCES QUIZ (ID) ON DELETE CASCADE,
+      
+    --Constraints de checagem 
+    CONSTRAINT CK_PONTOS_RESPONDE_QUIZ CHECK (PONTOS >= 0)
+);
+
+CREATE TABLE CURSO_MIDIA (
+    
+    --Atributos
+    CURSO number,
+    MIDIA varchar2(64),
+    
+    --Constraints básicas
+    constraint PK_CURSO_MIDIA primary key (CURSO, MIDIA),
+    constraint FK_CURSO_MIDIA foreign key (CURSO) references CURSO(ID)
+        on delete cascade
+);
+
+CREATE TABLE CURSO_LINK (
+    
+    --Atributos
+    CURSO number,
+    URL varchar2(2048),
+    PLATAFORMA varchar2(50) not null,
+    
+    --Constraints básicas
+    constraint PK_CURSO_LINK primary key (CURSO, URL),
+    constraint FK_CURSO_LINK foreign key (CURSO) references CURSO(ID)
+        on delete cascade,
+    constraint UNIQUE_CURSO_LINK_URL unique(URL)
+);
+
+CREATE TABLE CURSA(
     
     --Atributos
     USUARIO number,
@@ -216,28 +231,18 @@ create table CURSA(
     
 );
 
-create table PALESTRANTE (
+CREATE TABLE CONQUISTA_REQUISITO (
     
     --Atributos
-    ID number generated always as identity,
-    NOME varchar2(100) not null,
+    NOME VARCHAR2(30),
+    DESCRICAO_REQUISITO VARCHAR2(500),
     
-    --Constraints básicas
-    constraint PK_PALESTRANTE primary key(ID)
-);
+    --Contraints básicas
+    CONSTRAINT PK_CONQUISTA_REQUISITO PRIMARY KEY (NOME, DESCRICAO_REQUISITO),
+    CONSTRAINT FK_NOME_CONQUISTA_REQUISITO FOREIGN KEY (NOME) REFERENCES CONQUISTAS (NOME) ON DELETE CASCADE
+); 
 
-create table PALESTRANTE_ESPECIALIZACAO (
-    
-    --Atributos
-    PALESTRANTE number,
-    ESPECIALIZACAO varchar2(50),
-    
-    --Constraints básicas
-    constraint PK_PALESTRANTE_ESPECIALIZACAO primary key(PALESTRANTE, ESPECIALIZACAO),
-    constraint FK_PALESTRANTE_ESPECIALIZACAO foreign key(PALESTRANTE) references PALESTRANTE(ID) ON DELETE CASCADE
-);
-
-create table MINISTRA(
+CREATE TABLE MINISTRA(
     
     --Atributos
     CURSO number,
@@ -250,7 +255,7 @@ create table MINISTRA(
 
 );
 
-create table CURADOR(
+CREATE TABLE CURADOR(
     
     --Atributos
     ID number,
@@ -258,9 +263,9 @@ create table CURADOR(
     --Constraints básicas
     constraint PK_CURADOR primary key(ID),
     constraint FK_CURADOR foreign key(ID) references USUARIO on delete cascade
-)
+);
 
-create table ATUALIZA_CURSO(
+CREATE TABLE ATUALIZA_CURSO(
 
     --Atributos
     CURADOR number,
@@ -271,45 +276,7 @@ create table ATUALIZA_CURSO(
     constraint PK_ATUALIZA_CURSO primary key(CURADOR, CURSO, DATA_HORA_ATUALIZACAO)
 );
 
-create table QUIZ (
-    
-    --Atributos
-    ID number generated always as identity,
-    NIVEL varchar2(8),
-    TEMA varchar2(50),
-    SUB_TEMA varchar2(50),
-        
-    --Contraints básicas
-    constraint PK_QUIZ primary key (ID),
-    constraint SK_QUIZ unique(NIVEL, TEMA, SUB_TEMA),
-    --NÃO APAGAR ASSUNTOS
-    constraint FK_QUIZ_ASSUNTO foreign key (TEMA, SUB_TEMA) references ASSUNTO(TEMA, SUB_TEMA),
-
-    --Constraint de checagens
-    constraint CK_NIVEL_QUIZ check (NIVEL in ('BRONZE', 'PRATA', 'OURO', 'PLATINA', 'DIAMANTE'))
-);
-
-create table QUIZ_PERGUNTAS(
-    
-    --Atributos
-    ID number generated always as identity,
-    QUESTAO varchar2(1000),
-    RESPOSTA varchar2(1) not null,
-    ALTERNATIVA_A varchar2(500) not null,
-    ALTERNATIVA_B varchar2(500) not null,
-    ALTERNATIVA_C varchar2(500) not null,
-    ALTERNATIVA_D varchar2(500) not null,
-    ALTERNATIVA_E varchar2(500) not null,
-    
-    --Contraints básicas
-    constraint PK_QUIZ_PERGUNTAS primary key(ID, QUESTAO),
-    constraint FK_QUIZ_PERGUNTAS foreign key(ID) references QUIZ on delete cascade,
-    
-    --Constraint de checagens
-    constraint CK_RESPOSTA check(RESPOSTA = 'A' OR RESPOSTA = 'B' OR RESPOSTA = 'C' OR RESPOSTA = 'D' OR RESPOSTA = 'E' )
-);
-
-create table THREAD (
+CREATE TABLE THREAD (
     
     --Atributos
     ID number generated always as identity,
@@ -330,7 +297,41 @@ create table THREAD (
     constraint FK_THREAD_USUARIO foreign key(USUARIO) references USUARIO(ID)
 );
 
-create table RESPONDE_COMENTARIO (
+CREATE TABLE COMENTARIO (
+    
+    --Atributos
+    ID NUMBER GENERATED ALWAYS AS IDENTITY,
+    THREAD NUMBER NOT NULL,
+     
+    --O usuário vai poder ser nulo no sql porquê isso será tratado na aplicação.
+    --Já que, para um comentário ser feito, alguém ter que estar logado.
+    --Não será apagado em cascata porque queremos manter o comentário de um usuário mesmo que o usuário não exista mais
+    --(assim como o reddit faz usando um user "u/deleted")
+    USUARIO NUMBER,
+    DATA_HORA_PUBLICACAO DATE NOT NULL,
+    COMENTARIO VARCHAR2(4000),
+    
+    --Constraints básicas 
+    CONSTRAINT PK_COMENTARIO PRIMARY KEY (ID),
+    CONSTRAINT FK_USUARIO_COMENTARIO FOREIGN KEY (USUARIO) REFERENCES USUARIO (ID),
+    CONSTRAINT FK_THREAD_COMENATRIO FOREIGN KEY (THREAD) REFERENCES THREAD (ID) ON DELETE CASCADE,
+    CONSTRAINT UN_COMENTARIO UNIQUE(THREAD, USUARIO, DATA_HORA_PUBLICACAO)
+);
+
+CREATE TABLE ATUALIZA_PALESTRANTE (
+      
+    --Atributos
+    CURADOR NUMBER,
+    PALESTRANTE NUMBER, 
+    DATA_HORA_ATUALIZACAO DATE,
+    
+    --Constraints básicas  
+    CONSTRAINT PK_ATUALIZA_PALESTRANTE PRIMARY KEY (CURADOR, PALESTRANTE, DATA_HORA_ATUALIZACAO),
+    CONSTRAINT FK_CURADOR_ATUALIZA_PALESTRANTE FOREIGN KEY (CURADOR) REFERENCES CURADOR (ID),
+    CONSTRAINT FK_PALESTRANTE_ATUALIZA_PALESTRANTE FOREIGN KEY (PALESTRANTE) REFERENCES PALESTRANTE (ID) ON DELETE CASCADE
+);
+
+CREATE TABLE RESPONDE_COMENTARIO (
     
     --Atributos
     COMENTARIO number,
@@ -341,16 +342,6 @@ create table RESPONDE_COMENTARIO (
     constraint PK_RESPONDE_COMENTARIO primary key (COMENTARIO, RESPOSTA),
     constraint FK_RESPONDE_COMENTARIO_COMENTARIO foreign key (COMENTARIO) references COMENTARIO(ID),
     constraint FK_RESPONDE_COMENTARIO_RESPOSTA foreign key (RESPOSTA) references COMENTARIO(ID) 
-)
-
-insert into USUARIO (EMAIL, NOME) values (
-    'teste@gmail.com',
-    'Teste Da Silva'
 );
-
-insert into PALESTRANTE (NOME) values (
-    'El Teste Madrigal'
-);
-
 
 commit;
