@@ -1,4 +1,3 @@
---criar nessa ordem por dependência de chaves estrangeiras
 CREATE TABLE ASSUNTO (
     
     --Atributos
@@ -67,7 +66,7 @@ CREATE TABLE QUIZ (
 CREATE TABLE QUIZ_PERGUNTAS(
     
     --Atributos
-    ID number generated always as identity,
+    ID number not null,
     QUESTAO varchar2(1000),
     RESPOSTA varchar2(1) not null,
     ALTERNATIVA_A varchar2(500) not null,
@@ -78,7 +77,7 @@ CREATE TABLE QUIZ_PERGUNTAS(
     
     --Contraints básicas
     constraint PK_QUIZ_PERGUNTAS primary key(ID, QUESTAO),
-    constraint FK_QUIZ_PERGUNTAS foreign key(ID) references QUIZ on delete cascade,
+    constraint FK_QUIZ_PERGUNTAS foreign key(ID) references QUIZ(ID) on delete cascade,
     
     --Constraint de checagens
     constraint CK_RESPOSTA check(RESPOSTA = 'A' OR RESPOSTA = 'B' OR RESPOSTA = 'C' OR RESPOSTA = 'D' OR RESPOSTA = 'E' )
