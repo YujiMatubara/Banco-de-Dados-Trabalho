@@ -131,6 +131,51 @@ INSERT INTO CONQUISTAS
 VALUES
 ('Email verificado', 'Bronze');
 
+INSERT INTO CONQUISTAS
+(NOME, NIVEL)
+VALUES
+('Compartilhando conhecimento', 'Bronze');
+
+INSERT INTO CONQUISTAS
+(NOME, NIVEL)
+VALUES
+('Grupo de Estudos', 'Prata');
+
+INSERT INTO CONQUISTAS
+(NOME, NIVEL)
+VALUES
+('Comentarista', 'Prata');
+
+INSERT INTO CONQUISTAS
+(NOME, NIVEL)
+VALUES
+('Disciplinado', 'Prata');
+
+INSERT INTO CONQUISTAS
+(NOME, NIVEL)
+VALUES
+('Valeu o esforço', 'Diamante');
+
+INSERT INTO CONQUISTAS
+(NOME, NIVEL)
+VALUES
+('Curso concluido', 'Prata');
+
+INSERT INTO CONQUISTAS
+(NOME, NIVEL)
+VALUES
+('Quiz gabaritado', 'Prata');
+
+INSERT INTO CONQUISTAS
+(NOME, NIVEL)
+VALUES
+('Mestre das especializações', 'Platina');
+
+INSERT INTO CONQUISTAS
+(NOME, NIVEL)
+VALUES
+('Sala de aula', 'Ouro');
+
 --------------------------------------------------------------------------------
 INSERT INTO CONQUISTA_REQUISITO
 (NOME, DESCRICAO_REQUISITO)
@@ -141,6 +186,51 @@ INSERT INTO CONQUISTA_REQUISITO
 (NOME, DESCRICAO_REQUISITO)
 VALUES
 ('Email verificado', 'Verificar o e-mail da conta criada.');
+
+INSERT INTO CONQUISTA_REQUISITO
+(NOME, DESCRICAO_REQUISITO)
+VALUES
+('Disciplinado', 'Assistiu 10 aulas diferentes.');
+
+INSERT INTO CONQUISTA_REQUISITO
+(NOME, DESCRICAO_REQUISITO)
+VALUES
+('Comentarista', 'Comentou em 10 threads diferentes.');
+
+INSERT INTO CONQUISTA_REQUISITO
+(NOME, DESCRICAO_REQUISITO)
+VALUES
+('Grupo de Estudos', 'Fez 10 amigos.');
+
+INSERT INTO CONQUISTA_REQUISITO
+(NOME, DESCRICAO_REQUISITO)
+VALUES
+('Compartilhando conhecimento', 'Compartilhou o link do site com os amigos.');
+
+INSERT INTO CONQUISTA_REQUISITO
+(NOME, DESCRICAO_REQUISITO)
+VALUES
+('Valeu o esforço', 'Concluiu 50 cursos.');
+
+INSERT INTO CONQUISTA_REQUISITO
+(NOME, DESCRICAO_REQUISITO)
+VALUES
+('Curso concluido', 'Concluir um curso.');
+
+INSERT INTO CONQUISTAS
+(NOME, NIVEL)
+VALUES
+('Quiz gabaritado', 'Acertar todas as questões de um quiz.');
+
+INSERT INTO CONQUISTAS
+(NOME, NIVEL)
+VALUES
+('Mestre das especializações', 'Concluir 5 cursos de um mesmo tema.');
+
+INSERT INTO CONQUISTAS
+(NOME, NIVEL)
+VALUES
+('Sala de aula', 'Fazer 50 amigos na plataforma.');
 
 --------------------------------------------------------------------------------
 INSERT INTO DESBLOQUEIA_CONQUISTA
