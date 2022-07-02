@@ -146,12 +146,30 @@ VALUES
 INSERT INTO DESBLOQUEIA_CONQUISTA
 (NOME_CONQUISTA, USUARIO)
 VALUES
-('Conta criada', 21);
+('Conta criada', (SELECT U.ID 
+FROM USUARIO U
+WHERE NOME = 'Lucas Yuji Matubara'));
 
 INSERT INTO DESBLOQUEIA_CONQUISTA
 (NOME_CONQUISTA, USUARIO)
 VALUES
-('Conta criada', 22);
+('Conta criada', (SELECT U.ID 
+FROM USUARIO U
+WHERE NOME = 'Wictor Dalbosco Silva'));
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Conta criada', (SELECT U.ID 
+FROM USUARIO U
+WHERE NOME = 'Pedro Henrique'));
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Conta criada', (SELECT U.ID 
+FROM USUARIO U
+WHERE NOME = 'Luisa Balleroni'));
 
 --------------------------------------------------------------------------------
 INSERT INTO CURADOR
