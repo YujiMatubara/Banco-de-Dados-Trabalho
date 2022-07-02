@@ -408,6 +408,16 @@ FROM USUARIO U
 WHERE U.NOME = 'Laura Matiolli'),
 TO_DATE('2021/07/24 12:22:23', 'YYYY/MM/DD HH24:MI:SS'), 'Combinado');
 
+INSERT INTO COMENTARIO
+(THREAD, USUARIO, DATA_HORA_PUBLICACAO, COMENTARIO)
+VALUES
+((SELECT T.ID 
+FROM THREAD T, CURSO C
+WHERE C.TITULO = 'Cálculo 1' AND T.CURSO = C.ID AND C.DATA_LANCAMENTO = TO_DATE('2017/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
+(SELECT U.ID 
+FROM USUARIO U
+WHERE U.NOME = 'Lucas Yuji Matubara'),
+TO_DATE('2021/07/24 12:22:23', 'YYYY/MM/DD HH24:MI:SS'), 'Também quero');
 --------------------------------------------------------------------------------
 INSERT INTO CURSO_MIDIA
 (CURSO, MIDIA)
@@ -447,42 +457,42 @@ INSERT INTO CURSO_LINK
 VALUES
 ((SELECT C.ID 
 FROM CURSO C
-WHERE C.TITULO = 'Cálculo 1'), 'https://www.youtube.com/watch?v=Utj5xUmUEvk&list=PLxI8Can9yAHdCutIIiKca1wrkuRLvBhHs', 'Youtube');
+WHERE C.TITULO = 'Cálculo 1'), 'https://www.youtube.com/watch?v=Utj5xUmUEvklist=PLxI8Can9yAHdCutIIiKca1wrkuRLvBhHs', 'Youtube');
 
 INSERT INTO CURSO_LINK
 (CURSO, URL, PLATAFORMA)
 VALUES
 ((SELECT C.ID 
 FROM CURSO C
-WHERE C.TITULO = 'Cálculo 2'), 'https://www.youtube.com/watch?v=wIXCb0_iVrc&list=PLxI8Can9yAHfo-IWbd4FZ1sIPuemagUID', 'Youtube');
+WHERE C.TITULO = 'Cálculo 2'), 'https://www.youtube.com/watch?v=wIXCb0_iVrclist=PLxI8Can9yAHfo-IWbd4FZ1sIPuemagUID', 'Youtube');
 
 INSERT INTO CURSO_LINK
 (CURSO, URL, PLATAFORMA)
 VALUES
 ((SELECT C.ID 
 FROM CURSO C
-WHERE C.TITULO = 'Cálculo 3'), 'https://www.youtube.com/watch?v=8mBTfk7s63s&list=PLAudUnJeNg4ugGUJo52dtgFZ_tCm1Ds5W', 'Youtube');
+WHERE C.TITULO = 'Cálculo 3'), 'https://www.youtube.com/watch?v=8mBTfk7s63slist=PLAudUnJeNg4ugGUJo52dtgFZ_tCm1Ds5W', 'Youtube');
 
 INSERT INTO CURSO_LINK
 (CURSO, URL, PLATAFORMA)
 VALUES
 ((SELECT C.ID 
 FROM CURSO C
-WHERE C.TITULO = 'Cálculo 4'), 'https://www.youtube.com/watch?v=qSt79dDjOeU&list=PLAudUnJeNg4ssEeZCZ0BOgwflysb7UZmX', 'Youtube');
+WHERE C.TITULO = 'Cálculo 4'), 'https://www.youtube.com/watch?v=qSt79dDjOeUlist=PLAudUnJeNg4ssEeZCZ0BOgwflysb7UZmX', 'Youtube');
 
 INSERT INTO CURSO_LINK
 (CURSO, URL, PLATAFORMA)
 VALUES
 ((SELECT C.ID 
 FROM CURSO C
-WHERE C.TITULO = 'Álgebra Linear'), 'https://www.youtube.com/watch?v=-JcQJFNVjaA&list=PLIEzh1OveCVczEZAjhVIVd7Qs-X8ILgnI', 'Youtube');
+WHERE C.TITULO = 'Álgebra Linear'), 'https://www.youtube.com/watch?v=-JcQJFNVjaAlist=PLIEzh1OveCVczEZAjhVIVd7Qs-X8ILgnI', 'Youtube');
 
 INSERT INTO CURSO_LINK
 (CURSO, URL, PLATAFORMA)
 VALUES
 ((SELECT C.ID 
 FROM CURSO C
-WHERE C.TITULO = 'Cálculo Numérico'), 'https://www.youtube.com/watch?v=3jTueAA6Fhw&list=PLsfUsqON-YybXUTyvm_xy8J8VpHRvpG_z', 'Youtube');
+WHERE C.TITULO = 'Cálculo Numérico'), 'https://www.youtube.com/watch?v=3jTueAA6Fhwlist=PLsfUsqON-YybXUTyvm_xy8J8VpHRvpG_z', 'Youtube');
 
 --------------------------------------------------------------------------------
 INSERT INTO AMIZADE
