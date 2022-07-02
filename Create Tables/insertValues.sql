@@ -151,6 +151,8 @@ INSERT INTO CONQUISTAS
 VALUES
 ('Disciplinado', 'Prata');
 
+
+
 --------------------------------------------------------------------------------
 INSERT INTO CONQUISTA_REQUISITO
 (NOME, DESCRICAO_REQUISITO)
