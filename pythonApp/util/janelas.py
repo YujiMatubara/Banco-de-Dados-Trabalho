@@ -53,7 +53,7 @@ def main_window(cursor, token):
         opcao = int(input("Option: "))
 
         # sair do app
-        if opcao == 9:
+        if opcao == 0:
             break
         # listar todos os cursos do usuário
         elif opcao == 1:
@@ -63,7 +63,7 @@ def main_window(cursor, token):
             lista_amizades_usuario(cursor, token)
         # imprimir todas as conquistas dod usuário ordenadas das mais raras para as menos raras
         elif opcao == 3:
-            pass
+            lista_conquistas_usuario(cursor, token)
         # pesquisar um curso novo
         elif opcao == 4:
             nome_curso = input("Digite o nome do curso (SEM ACENTO): ")
