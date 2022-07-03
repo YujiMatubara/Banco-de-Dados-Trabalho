@@ -244,7 +244,7 @@ CREATE TABLE CURSA(
     
     --Constraint de checagens
     constraint CK_PROGRESSO check (PROGRESSO = 'PLANEJADO' OR PROGRESSO = 'EM ANDAMENTO' OR PROGRESSO = 'CONCLUIDO' OR PROGRESSO = 'ABANDONADO'),
-    constraint CK_AVALIACAO check (AVALIACAO >= 0 AND AVALIACAO <= 5)
+    constraint CK_AVALIACAO check (AVALIACAO >= 0 AND AVALIACAO <= 10)
     
 );
 
