@@ -51,12 +51,13 @@ ORDER BY Q1.TEMA, Q1.SUB_TEMA, Q1.NIVEL;
 
 -- Query 4
 -- Selecionar todos os palestrantes que deram os cursos mais bem avaliados de determinado tema (selecionar os melhores palestrantes de cada área) 
-SELECT DISTINCT P.NOME
-FROM PALESTRANTE P 
+SELECT P.NOME, ROUND(AVG(C.SOMA_AVALIACAO / C.QTD_AVALIACAO), 2) AS MEDIA
+FROM PALESTRANTE P
 INNER JOIN MINISTRA M ON P.ID = M.PALESTRANTE
 INNER JOIN CURSO C ON M.CURSO = C.ID
-WHERE C.TEMA = ‘X’
-ORDER BY C.SOMA_AVALIACAO / C.QTD_AVALIACAO DESC;
+WHERE UPPER(C.TEMA) = 'MATEMÁTICA'
+GROUP BY P.NOME
+ORDER BY ROUND(AVG(C.SOMA_AVALIACAO / C.QTD_AVALIACAO), 2) DESC;
 
 -- Query 5
 -- Fazer ranking entre amigos com base na quantidade de conquistas ordenadas por conquistas de nível alto para baixo (tipo placar de medalhas das olimpíadas) 
