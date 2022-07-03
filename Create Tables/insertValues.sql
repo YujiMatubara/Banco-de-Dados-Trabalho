@@ -582,7 +582,7 @@ TO_DATE('2020/04/14 16:24:02', 'YYYY/MM/DD HH24:MI:SS'));
 INSERT INTO QUIZ
 (NIVEL, TEMA, SUB_TEMA)
 VALUES
-('PRATA', 'Matemática', 'Cálculo');
+('BRONZE', 'Matemática', 'Cálculo');
 
 INSERT INTO QUIZ
 (NIVEL, TEMA, SUB_TEMA)
@@ -592,7 +592,37 @@ VALUES
 INSERT INTO QUIZ
 (NIVEL, TEMA, SUB_TEMA)
 VALUES
+('BRONZE', 'Matemática', 'Álgebra Linear');
+
+INSERT INTO QUIZ
+(NIVEL, TEMA, SUB_TEMA)
+VALUES
+('PRATA', 'Matemática', 'Cálculo');
+
+INSERT INTO QUIZ
+(NIVEL, TEMA, SUB_TEMA)
+VALUES
 ('PRATA', 'Matemática', 'Discreta');
+
+INSERT INTO QUIZ
+(NIVEL, TEMA, SUB_TEMA)
+VALUES
+('PRATA', 'Matemática', 'Álgebra Linear');
+
+INSERT INTO QUIZ
+(NIVEL, TEMA, SUB_TEMA)
+VALUES
+('OURO', 'Matemática', 'Cálculo');
+
+INSERT INTO QUIZ
+(NIVEL, TEMA, SUB_TEMA)
+VALUES
+('OURO', 'Matemática', 'Discreta');
+
+INSERT INTO QUIZ
+(NIVEL, TEMA, SUB_TEMA)
+VALUES
+('OURO', 'Matemática', 'Álgebra Linear');
 
 --------------------------------------------------------------------------------
 INSERT INTO RESPONDE_QUIZ
