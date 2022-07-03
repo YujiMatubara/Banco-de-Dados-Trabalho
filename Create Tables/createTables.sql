@@ -233,7 +233,7 @@ CREATE TABLE CURSA(
     USUARIO number,
     CURSO number,
     PROGRESSO varchar2(13) not null,
-    AVALIACAO number(1),
+    AVALIACAO number(2),
     COMENTARIO varchar2(180),
     ANOTACOES_PESSOAIS varchar2(1000),
     
@@ -244,7 +244,7 @@ CREATE TABLE CURSA(
     
     --Constraint de checagens
     constraint CK_PROGRESSO check (PROGRESSO = 'PLANEJADO' OR PROGRESSO = 'EM ANDAMENTO' OR PROGRESSO = 'CONCLUIDO' OR PROGRESSO = 'ABANDONADO'),
-    constraint CK_AVALIACAO check (AVALIACAO >= 0 AND AVALIACAO <= 10)
+    constraint CK_AVALIACAO check (AVALIACAO BETWEEN 0 AND 10)
     
 );
 
