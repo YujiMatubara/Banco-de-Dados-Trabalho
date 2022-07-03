@@ -1,5 +1,6 @@
 from util.controleSGBD import *
 
+#tela de login que chama as funções ligadas ao SGBD
 def login(cursor):
 	
 	while True:
@@ -26,6 +27,7 @@ def login(cursor):
 
 	return paraken
 
+#Tela principal que lista informações pertinentes e faz consultas
 def main_window(cursor, token):
 
 	while True:
@@ -42,15 +44,20 @@ def main_window(cursor, token):
 		print('-----------------------------------------------\n\n')
 		opcao = int(input('Option: '))
 
+		#listar todos os cursos do usuário
 		if opcao == 1:
 			lista_cursos_usuario(cursor, token)
+		#imprimir toda a lista de amigos do usuário
 		elif opcao == 2:
 			pass
+		#imprimir todas as conquistas dod usuário ordenadas das mais raras para as menos raras
 		elif opcao == 3:
 			pass
+		#pesquisar um curso novo
 		elif opcao == 4:
 			nome_curso =  input('Digite o nome do curso (SEM ACENTO): ')
 			pesquisa_cursos(cursor, nome_curso)
+		#sair do app
 		elif opcao == 9:
 			break
 
