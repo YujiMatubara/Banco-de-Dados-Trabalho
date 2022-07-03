@@ -20,16 +20,67 @@ def cadastra_login(cursor, username, email):
     return cursor.execute(sql, [email]).fetchall()[0][0]
 
 
-def lista_cursos_usuario(cursor, token):
+def lista_cursos_usuario_(cursor, token):
     # Com o ID do usuário, pega todos os cursos já cursados que se juntam com o user e imprime
     sql = "select CURSO.ID, CURSO.TITULO from CURSO join CURSA on CURSO.ID = CURSA.CURSO where CURSA.USUARIO = :userToken"
-    lista_cursos = cursor.execute(sql, [token]).fetchall()
+    lista_cursos = cursor.execute(sql, userToken=token).fetchall()
     if lista_cursos:
         for nome_curso, id_curso in lista_cursos:
             print(f"Nome do curso: {nome_curso}\nID do curso: {id_curso}\n")
     else:
         print("Nenhum curso feito/fazendo")
     return
+
+def lista_cursos_usuario(cursor, token):
+    def avaliacao_to_str(val : int) -> str:
+        return ("*" * val) + (" " * (5 - val))
+
+    def imprime_curso(titulo, tema, subtema, avaliacao):
+        string = "[{avaliacao}] {titulo} \t {tema}: {subtema}".format(
+            avaliacao=avaliacao_to_str(avaliacao),
+            titulo=titulo,
+            tema=tema,
+            subtema=subtema
+        )
+        print(string)
+
+
+    # Com o ID do usuário, pega todos os cursos já cursados que se juntam com o user e imprime
+    sql = "select CURSO.TITULO, CURSO.TEMA, CURSO.SUB_TEMA, CURSA.PROGRESSO, CURSA.AVALIACAO from CURSO join CURSA on CURSO.ID = CURSA.CURSO where CURSA.USUARIO = :userToken"
+    lista_cursos = cursor.execute(sql, userToken=token).fetchall()
+    if lista_cursos:
+        # 'CONCLUIDO' OR PROGRESSO = 'ABANDONADO'
+        andamento = [i for i in lista_cursos if i[3] == 'EM ANDAMENTO']
+        concluido = [i for i in lista_cursos if i[3] == 'CONCLUIDO']
+        planejado = [i for i in lista_cursos if i[3] == 'PLANEJADO']
+        abandonado =  [i for i in lista_cursos if i[3] == 'ABANDONADO']
+
+        if andamento:
+            print("Cursos em andamento: ")
+            for titulo, tema, subtema, _, avaliacao in andamento:
+                imprime_curso(titulo, tema, subtema, avaliacao)
+            print()
+        if concluido:
+            print("Cursos concluidos: ")
+            for titulo, tema, subtema, _, avaliacao in concluido:
+                imprime_curso(titulo, tema, subtema, avaliacao)
+            print()
+        if planejado: 
+            print("Cursos planejados: ")
+            for titulo, tema, subtema, _, avaliacao in planejado:
+                imprime_curso(titulo, tema, subtema, avaliacao)
+            print()
+        if abandonado:
+            print("Cursos abandonados: ")
+            for titulo, tema, subtema, _, avaliacao in abandonado:
+                imprime_curso(titulo, tema, subtema, avaliacao)
+            print()
+
+    else:
+        print("Nenhum curso feito/fazendo")
+
+
+
 
 def lista_amizades_usuario(cursor, token):
     # Com o ID do usuario, pega todos os amigos que ele tem
