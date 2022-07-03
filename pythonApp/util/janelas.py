@@ -11,15 +11,21 @@ def login(cursor):
         if opcao == 1:
             email = input("Digite seu email: ")
             if not valida.email(email):
+                print("Email invalido: O email nao pode ter mais de 255 caracteres\n")
                 continue
 
             paraken = tentativa_login(cursor, email)
             if paraken is not None:
                 break
+
         elif opcao == 2:
             username = input("Digite seu username: ")
             email = input("Digite seu email: ")
-            if not valida.email(email) or not valida.username(username):
+            if not valida.email(email):
+                print("Email invalido: O email nao pode ter mais de 255 caracteres\n")
+                continue
+            if not valida.username(username):
+                print("Username invalido: o username nao pode ter mais de 100 caracteres\n")
                 continue
 
             paraken = cadastra_login(cursor, username, email)
@@ -38,24 +44,23 @@ def login(cursor):
 def main_window(cursor, token):
     while True:
         print("-----------------------------------------------")
+        print("Digite 0 para sair")
         print("Digite 1 para ver seus cursos")
         print("Digite 2 para ver sua lista de amigos")
         print("Digite 3 para ver suas conquistas")
         print("Digite 4 para pesquisar cursos")
-        print("Digite 5 para ")
-        print("Digite 6 para ")
-        print("Digite 7 para ")
-        print("Digite 8 para ")
-        print("Digite 9 para sair")
         print("-----------------------------------------------\n\n")
         opcao = int(input("Option: "))
 
+        # sair do app
+        if opcao == 9:
+            break
         # listar todos os cursos do usuário
-        if opcao == 1:
+        elif opcao == 1:
             lista_cursos_usuario(cursor, token)
         # imprimir toda a lista de amigos do usuário
         elif opcao == 2:
-            pass
+            lista_amizades_usuario(cursor, token)
         # imprimir todas as conquistas dod usuário ordenadas das mais raras para as menos raras
         elif opcao == 3:
             pass
@@ -63,8 +68,5 @@ def main_window(cursor, token):
         elif opcao == 4:
             nome_curso = input("Digite o nome do curso (SEM ACENTO): ")
             pesquisa_cursos(cursor, nome_curso)
-        # sair do app
-        elif opcao == 9:
-            break
 
     print("Good bye!!")
