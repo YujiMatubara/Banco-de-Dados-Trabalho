@@ -33,7 +33,7 @@ def lista_cursos_usuario(cursor, token):
 
 def lista_amizades_usuario(cursor, token):
     # Com o ID do usuario, pega todos os amigos que ele tem
-    sql = "select AMIZADE.DATA_INICIO_AMIZADE, AMIGO.NOME, AMIGO.EMAIL, AMIGO.NIVEL_DE_CONQUISTA from USUARIO join AMIZADE on USUARIO.ID = AMIZADE.USUARIO join USUARIO AMIGO on AMIGO.ID = AMIZADE.AMIGO where USUARIO.ID = :userToken"
+    sql = "select AMIZADE.DATA_INICIO_AMIZADE, AMIGO.NOME, AMIGO.NIVEL_DE_CONQUISTA from USUARIO join AMIZADE on USUARIO.ID = AMIZADE.USUARIO join USUARIO AMIGO on AMIGO.ID = AMIZADE.AMIGO where USUARIO.ID = :userToken"
     lista_amigos = cursor.execute(sql, userToken=token).fetchall()
     if lista_amigos:
         for data_inicio, nome, email, nivel_conquista in lista_amigos:
