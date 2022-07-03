@@ -8,7 +8,7 @@ from util.controleSGBD import *
 
 print("Iniciando conexao com servidor")
 #colocando o cliente do oracle
-#cx_Oracle.init_oracle_client(lib_dir=r"C:\oracle\instantclient_19_9")
+#Colocar o path do instant client aqui
 cx_Oracle.init_oracle_client(lib_dir=r"C:\Users\Luisa\Documents\client_BD\instantclient_21_6")
 
 #entrando no sql
