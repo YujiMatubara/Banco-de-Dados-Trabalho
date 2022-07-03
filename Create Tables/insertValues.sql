@@ -276,6 +276,247 @@ VALUES
 FROM USUARIO U
 WHERE U.EMAIL = 'luisa@usp.br'));
 
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Conta criada', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'bermudes@gmail.com.br'));
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Conta criada', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'lucas_matos@gmail.com.br'));
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Conta criada', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'laura_matiolli@gmail.com.br'));
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Conta criada', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'camila_sakuraba@gmail.com.br'));
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Conta criada', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'vinicius_guedes@gmail.com.br'));
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Conta criada', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'caue_trevelin@gmail.com.br'));
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Conta criada', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'aline_ventura@gmail.com.br'));
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Conta criada', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'nick_iacobacci@gmail.com.br'));
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Conta criada', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'fernando_yutaka@gmail.com.br'));
+
+-- ================= LUISA =================
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Email verificado', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'luisa@usp.br'));
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Disciplinado', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'luisa@usp.br'));
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Compartilhando conhecimento', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'luisa@usp.br'));
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Curso concluido', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'luisa@usp.br'));
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Quiz gabaritado', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'luisa@usp.br'));
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Mestre das especializações', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'luisa@usp.br'));
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Fã de vídeo aula', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'luisa@usp.br'));
+
+-- ================== VINICIUS ===================
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Email verificado', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'vinicius_guedes@gmail.com.br'));
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Disciplinado', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'vinicius_guedes@gmail.com.br'));
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Comentarista', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'vinicius_guedes@gmail.com.br'));
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Curso concluido', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'vinicius_guedes@gmail.com.br'));
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Quiz gabaritado', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'vinicius_guedes@gmail.com.br'));
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Mestre das especializações', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'vinicius_guedes@gmail.com.br'));
+
+-- ================== FERNANDO ===================
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Curso concluido', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'fernando_yutaka@gmail.com.br'));
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Email verificado', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'fernando_yutaka@gmail.com.br'));
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Mestre das especializações', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'fernando_yutaka@gmail.com.br'));
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Comentarista', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'fernando_yutaka@gmail.com.br'));
+
+-- ================== NICOLE ===================
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Email verificado', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'nick_iacobacci@gmail.com.br'));
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Grupo de Estudos', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'nick_iacobacci@gmail.com.br'));
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Curso concluido', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'nick_iacobacci@gmail.com.br'));
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Fã de vídeo aula', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'nick_iacobacci@gmail.com.br'));
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Valeu o esforço', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'nick_iacobacci@gmail.com.br'));
+
+-- ================== CAMILA ===================
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Grupo de Estudos', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'camila_sakuraba@gmail.com.br'));
+
+INSERT INTO DESBLOQUEIA_CONQUISTA
+(NOME_CONQUISTA, USUARIO)
+VALUES
+('Disciplinado', (SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'camila_sakuraba@gmail.com.br'));
+
 --------------------------------------------------------------------------------
 INSERT INTO CURADOR
 (ID)
