@@ -1262,7 +1262,7 @@ WHERE U.EMAIL = 'nick_iacobacci@gmail.com.br'),
 (SELECT C.ID 
 FROM CURSO C
 WHERE C.TITULO = 'Matemática para computeiro' AND C.DATA_LANCAMENTO = TO_DATE('2020/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
-'CONCLUIDO', 5, 'Gostei', 'Matematica diferente');
+'CONCLUIDO', 10, 'Gostei', 'Matematica diferente');
 
 INSERT INTO CURSA
 (USUARIO, CURSO, PROGRESSO, AVALIACAO, COMENTARIO, ANOTACOES_PESSOAIS)
@@ -1273,7 +1273,7 @@ WHERE U.EMAIL = 'nick_iacobacci@gmail.com.br'),
 (SELECT C.ID 
 FROM CURSO C
 WHERE C.TITULO = 'Cálculo 1' AND C.DATA_LANCAMENTO = TO_DATE('2017/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
-'CONCLUIDO', 5, 'Gostei', 'Matematica diferente');
+'CONCLUIDO', 10, 'Gostei', 'Matematica diferente');
 
 INSERT INTO CURSA
 (USUARIO, CURSO, PROGRESSO, AVALIACAO, COMENTARIO, ANOTACOES_PESSOAIS)
@@ -1284,7 +1284,7 @@ WHERE U.EMAIL = 'nick_iacobacci@gmail.com.br'),
 (SELECT C.ID 
 FROM CURSO C
 WHERE C.TITULO = 'Cálculo 2' AND C.DATA_LANCAMENTO = TO_DATE('2017/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
-'CONCLUIDO', 3, 'Amei', 'Matematica caclulo');
+'CONCLUIDO', 6, 'Amei', 'Matematica caclulo');
 
 -- ================= VINICIUS =================
 INSERT INTO CURSA
@@ -1296,7 +1296,7 @@ WHERE U.EMAIL = 'vinicius_guedes@gmail.com.br'),
 (SELECT C.ID 
 FROM CURSO C
 WHERE C.TITULO = 'Álgebra Linear' AND C.DATA_LANCAMENTO = TO_DATE('2017/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
-'CONCLUIDO', 4, 'Farid te amo', 'Lembrar de rotacionar');
+'CONCLUIDO', 8, 'Farid te amo', 'Lembrar de rotacionar');
 
 
 INSERT INTO CURSA
@@ -1308,7 +1308,7 @@ WHERE U.EMAIL = 'vinicius_guedes@gmail.com.br'),
 (SELECT C.ID 
 FROM CURSO C
 WHERE C.TITULO = 'Português, ETEC, 2022, 1 Ano, 1º Semestre' AND C.DATA_LANCAMENTO = TO_DATE('2020/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
-'CONCLUIDO', 2, 'Amo letras', 'Sempre ler um livro');
+'CONCLUIDO', 4, 'Amo letras', 'Sempre ler um livro');
 
 INSERT INTO CURSA
 (USUARIO, CURSO, PROGRESSO, AVALIACAO, COMENTARIO, ANOTACOES_PESSOAIS)
@@ -1343,7 +1343,7 @@ WHERE U.EMAIL = 'fernando_yutaka@gmail.com.br'),
 (SELECT C.ID 
 FROM CURSO C
 WHERE C.TITULO = 'Álgebra Linear' AND C.DATA_LANCAMENTO = TO_DATE('2017/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
-'CONCLUIDO', 1, 'Farid te odeio', 'Lembrar de nunca mais abrirrrr');
+'CONCLUIDO', 2, 'Farid te odeio', 'Lembrar de nunca mais abrirrrr');
 
 INSERT INTO CURSA
 (USUARIO, CURSO, PROGRESSO, AVALIACAO, COMENTARIO, ANOTACOES_PESSOAIS)
@@ -1354,7 +1354,7 @@ WHERE U.EMAIL = 'fernando_yutaka@gmail.com.br'),
 (SELECT C.ID 
 FROM CURSO C
 WHERE C.TITULO = 'Português, ETEC, 2022, 1 Ano, 1º Semestre' AND C.DATA_LANCAMENTO = TO_DATE('2020/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
-'CONCLUIDO', 5, 'Amo port', 'Ler sempre um livro');
+'CONCLUIDO', 10, 'Amo port', 'Ler sempre um livro');
 
 INSERT INTO CURSA
 (USUARIO, CURSO, PROGRESSO, AVALIACAO, COMENTARIO, ANOTACOES_PESSOAIS)
@@ -1377,7 +1377,7 @@ WHERE U.EMAIL = 'wictor@usp.br'),
 (SELECT C.ID 
 FROM CURSO C
 WHERE C.TITULO = 'Português, ETEC, 2022, 1 Ano, 1º Semestre' AND C.DATA_LANCAMENTO = TO_DATE('2020/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
-'ABANDONADO', 1, 'Meio meh', 'Nao valeu a pena o esforço');
+'ABANDONADO', 2, 'Meio meh', 'Nao valeu a pena o esforço');
 
 INSERT INTO CURSA
 (USUARIO, CURSO, PROGRESSO, AVALIACAO, COMENTARIO, ANOTACOES_PESSOAIS)
@@ -1388,7 +1388,7 @@ WHERE U.EMAIL = 'wictor@usp.br'),
 (SELECT C.ID 
 FROM CURSO C
 WHERE C.TITULO = 'Álgebra Linear' AND C.DATA_LANCAMENTO = TO_DATE('2017/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
-'CONCLUIDO', 2, 'é farid, nao foi dessa vez', 'Lembrar de se matar de estudar');
+'CONCLUIDO', 4, 'é farid, nao foi dessa vez', 'Lembrar de se matar de estudar');
 
 INSERT INTO CURSA
 (USUARIO, CURSO, PROGRESSO, AVALIACAO, COMENTARIO, ANOTACOES_PESSOAIS)
@@ -1399,7 +1399,7 @@ WHERE U.EMAIL = 'wictor@usp.br'),
 (SELECT C.ID 
 FROM CURSO C
 WHERE C.TITULO = 'Cálculo 2' AND C.DATA_LANCAMENTO = TO_DATE('2017/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
-'CONCLUIDO', 4, 'Meio chato', 'Matematica caclulo 2');
+'CONCLUIDO', 8, 'Meio chato', 'Matematica caclulo 2');
 
 -- ================= LUISA =================
 INSERT INTO CURSA
@@ -1411,7 +1411,7 @@ WHERE U.EMAIL = 'luisa@usp.br'),
 (SELECT C.ID 
 FROM CURSO C
 WHERE C.TITULO = 'Cálculo 4' AND C.DATA_LANCAMENTO = TO_DATE('2017/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
-'ABANDONADO', 3, 'Vou m4t4r os profs', 'Lembrar que vai pro infinito');
+'ABANDONADO', 6, 'Vou m4t4r os profs', 'Lembrar que vai pro infinito');
 
 INSERT INTO CURSA
 (USUARIO, CURSO, PROGRESSO, AVALIACAO, COMENTARIO, ANOTACOES_PESSOAIS)
@@ -1422,7 +1422,7 @@ WHERE U.EMAIL = 'luisa@usp.br'),
 (SELECT C.ID 
 FROM CURSO C
 WHERE C.TITULO = 'Cálculo 3' AND C.DATA_LANCAMENTO = TO_DATE('2017/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
-'CONCLUIDO', 2, 'Eita como eh chato', 'Rotacional bla bla bla');
+'CONCLUIDO', 4, 'Eita como eh chato', 'Rotacional bla bla bla');
 
 INSERT INTO CURSA
 (USUARIO, CURSO, PROGRESSO, AVALIACAO, COMENTARIO, ANOTACOES_PESSOAIS)
@@ -1433,7 +1433,7 @@ WHERE U.EMAIL = 'luisa@usp.br'),
 (SELECT C.ID 
 FROM CURSO C
 WHERE C.TITULO = 'Matemática para computeiro' AND C.DATA_LANCAMENTO = TO_DATE('2020/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
-'CONCLUIDO', 5, 'Curso muito interessante', 'Fazer exercícios depois');
+'CONCLUIDO', 10, 'Curso muito interessante', 'Fazer exercícios depois');
 
 INSERT INTO CURSA
 (USUARIO, CURSO, PROGRESSO, AVALIACAO, COMENTARIO, ANOTACOES_PESSOAIS)
@@ -1444,7 +1444,7 @@ WHERE U.EMAIL = 'luisa@usp.br'),
 (SELECT C.ID 
 FROM CURSO C
 WHERE C.TITULO = 'Cálculo 1' AND C.DATA_LANCAMENTO = TO_DATE('2017/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
-'CONCLUIDO', 3, 'Gostei', 'Fazer exercícios depois');
+'CONCLUIDO', 6, 'Gostei', 'Fazer exercícios depois');
 
 INSERT INTO CURSA
 (USUARIO, CURSO, PROGRESSO, AVALIACAO, COMENTARIO, ANOTACOES_PESSOAIS)
@@ -1455,7 +1455,7 @@ WHERE U.EMAIL = 'luisa@usp.br'),
 (SELECT C.ID 
 FROM CURSO C
 WHERE C.TITULO = 'Cálculo 2' AND C.DATA_LANCAMENTO = TO_DATE('2017/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
-'CONCLUIDO', 5, 'Bem útil', 'Rever gradiente');
+'CONCLUIDO', 10, 'Bem útil', 'Rever gradiente');
 
 -- ================= CAMILA =================
 INSERT INTO CURSA
@@ -1467,7 +1467,7 @@ WHERE U.EMAIL = 'camila_sakuraba@gmail.com.br'),
 (SELECT C.ID 
 FROM CURSO C
 WHERE C.TITULO = 'Cálculo 2' AND C.DATA_LANCAMENTO = TO_DATE('2017/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
-'EM ANDAMENTO', 2, 'EITA COMO EH BOA', 'Limites e integrais');
+'EM ANDAMENTO', 4, 'EITA COMO EH BOA', 'Limites e integrais');
 
 INSERT INTO CURSA
 (USUARIO, CURSO, PROGRESSO, AVALIACAO, COMENTARIO, ANOTACOES_PESSOAIS)
@@ -1478,7 +1478,7 @@ WHERE U.EMAIL = 'camila_sakuraba@gmail.com.br'),
 (SELECT C.ID 
 FROM CURSO C
 WHERE C.TITULO = 'Cálculo 1' AND C.DATA_LANCAMENTO = TO_DATE('2017/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
-'CONCLUIDO', 1, 'Nao gostei do metodo', 'Limites CHATOS');
+'CONCLUIDO', 2, 'Nao gostei do metodo', 'Limites CHATOS');
 
 INSERT INTO CURSA
 (USUARIO, CURSO, PROGRESSO)
@@ -1512,7 +1512,7 @@ WHERE U.EMAIL = 'yuji.matubara@usp.br'),
 (SELECT C.ID 
 FROM CURSO C
 WHERE C.TITULO = 'Cálculo 1' AND C.DATA_LANCAMENTO = TO_DATE('2017/02/02 06:00:00', 'YYYY/MM/DD HH24:MI:SS')),
-'EM ANDAMENTO', 2, 'Estudar', 'Fazer mais exercícios de combinatória.');
+'EM ANDAMENTO', 4, 'Estudar', 'Fazer mais exercícios de combinatória.');
 
 --------------------------------------------------------------------------------
 INSERT INTO PALESTRANTE_ESPECIALIZACAO
