@@ -68,5 +68,8 @@ def main_window(cursor, token):
         elif opcao == 4:
             nome_curso = input("Digite o nome do curso (SEM ACENTO): ")
             pesquisa_cursos(cursor, nome_curso)
+        # opção inválida
+        else:
+            print("Opção inválida")
 
     print("Good bye!!")
