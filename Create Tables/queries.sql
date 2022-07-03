@@ -85,7 +85,7 @@ GROUP BY EMAILS.ID, EMAILS.EMAIL
 ORDER BY COUNT(C.NOME) DESC)
 ORDER BY PONTOS DESC;
 
--- EXTRA) 
+-- Query 6
 -- Listar todos os usuários que concluíram todos os cursos dados por um determinado palestrante (relevante para poder dar conquistas para usuários que fazem todos os cursos de um mesmo palestrante)
 SELECT DISTINCT US.ID, US.NOME
  
@@ -101,3 +101,16 @@ FROM USUARIO U INNER JOIN CURSA C ON U.ID = C.USUARIO
 WHERE PROGRESSO = 'CONCLUIDO' AND U.ID = US.ID));
 
 
+--- Query 7
+--- Selecionar todos os quizes dentro de um determinado subtema realizados por um usuário em que a sua pontuação foi abaixo da média:
+SELECT U.EMAIL, RQ.QUIZ, RQ.PONTOS, Q.NIVEL
+ 
+FROM USUARIO U
+INNER JOIN RESPONDE_QUIZ RQ ON U.ID = RQ.USUARIO
+INNER JOIN QUIZ Q ON RQ.QUIZ = Q.ID
+INNER JOIN PONTUACAO_CONQUISTA PQ ON UPPER(PQ.NIVEL) = UPPER(Q.NIVEL)
+ 
+WHERE U.EMAIL = 'bermudes@gmail.com.br' AND RQ.PONTOS < 50 AND UPPER(Q.SUB_TEMA) = 'ÁLGEBRA LINEAR'
+ 
+GROUP BY U.EMAIL, RQ.QUIZ, RQ.PONTOS, Q.NIVEL, PQ.ORDEM
+ORDER BY PQ.ORDEM ASC;
