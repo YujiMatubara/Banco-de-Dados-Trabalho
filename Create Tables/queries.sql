@@ -1,11 +1,11 @@
 --Query 1
 -- Selecionar médias de todos os cursos de um determinado tema que possuam pelo menos 50 avaliações ordenadas de maior para menor.
 -- (ou seja, queremos selecionar os cursos mais bem avaliados de cada tema) 
-Select titulo, SOMA_AVALIACAO/QTD_AVALIACAO as Media_Curso 
-from Curso join Assunto on Curso.tema = Assunto.tema
-where Curso.QTD_AVALIACAO >= 50
-group by(curso.titulo, curso.tema, SOMA_AVALIACAO/QTD_AVALIACAO)
-order by(SOMA_AVALIACAO/QTD_AVALIACAO) DESC;
+SELECT titulo, SOMA_AVALIACAO/QTD_AVALIACAO AS Media_Curso 
+FROM Curso JOIN Assunto ON Curso.tema = Assunto.tema
+WHERE Curso.QTD_AVALIACAO >= 50
+GROUP BY(curso.titulo, curso.tema, SOMA_AVALIACAO/QTD_AVALIACAO)
+ORDER BY(SOMA_AVALIACAO/QTD_AVALIACAO) DESC;
 
 -- Query 2
 -- Selecionar de todos os usuários seu email, nome, número de cursos cursados, 
@@ -18,15 +18,15 @@ order by(SOMA_AVALIACAO/QTD_AVALIACAO) DESC;
 
 --internamente contabilizar todas as questões por ID
 -- com a tabela de respostas juntar com os temas, subtemas e nivel para ordenação
-select Q1.ID, Q1.TEMA, Q1.SUB_TEMA, Q1.NIVEL, Q2.NQUESTIONS
-from QUIZ Q1 join (
-    select Q.ID, count(*) as NQUESTIONS
-    from QUIZ_PERGUNTAS QP join QUIZ Q
-        on QP.ID = Q.ID
-    group by
+SELECT Q1.ID, Q1.TEMA, Q1.SUB_TEMA, Q1.NIVEL, Q2.NQUESTIONS
+FROM QUIZ Q1 JOIN (
+    SELECT Q.ID, COUNT(*) AS NQUESTIONS
+    FROM QUIZ_PERGUNTAS QP JOIN QUIZ Q
+        ON QP.ID = Q.ID
+    GROUP BY
         Q.ID) Q2
-    on Q1.ID = Q2.ID
-order by Q1.TEMA, Q1.SUB_TEMA, Q1.NIVEL;
+    ON Q1.ID = Q2.ID
+ORDER BY Q1.TEMA, Q1.SUB_TEMA, Q1.NIVEL;
 
 -- Query 4
 -- Selecionar todos os palestrantes que deram os cursos mais bem avaliados de determinado tema (selecionar os melhores palestrantes de cada área) 
