@@ -625,6 +625,9 @@ VALUES
 ('OURO', 'Matemática', 'Álgebra Linear');
 
 --------------------------------------------------------------------------------
+
+-- ================= PEDRO =======================
+
 INSERT INTO RESPONDE_QUIZ
 (USUARIO, QUIZ, PONTOS)
 VALUES
@@ -715,6 +718,8 @@ WHERE U.EMAIL = 'pedro@usp.br'),
 FROM QUIZ Q
 WHERE Q.NIVEL = 'OURO' AND Q.TEMA = 'Matemática' AND Q.SUB_TEMA = 'Álgebra Linear'), 100);
 
+-- ================= LUISA =======================
+
 INSERT INTO RESPONDE_QUIZ
 (USUARIO, QUIZ, PONTOS)
 VALUES
@@ -804,6 +809,152 @@ WHERE U.EMAIL = 'luisa@usp.br'),
 (SELECT Q.ID 
 FROM QUIZ Q
 WHERE Q.NIVEL = 'OURO' AND Q.TEMA = 'Matemática' AND Q.SUB_TEMA = 'Álgebra Linear'), 40);
+
+-- ================= WICTOR =======================
+
+INSERT INTO RESPONDE_QUIZ
+(USUARIO, QUIZ, PONTOS)
+VALUES
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'wictor@usp.br'), 
+(SELECT Q.ID 
+FROM QUIZ Q
+WHERE Q.NIVEL = 'BRONZE' AND Q.TEMA = 'Matemática' AND Q.SUB_TEMA = 'Discreta'), 100);
+
+INSERT INTO RESPONDE_QUIZ
+(USUARIO, QUIZ, PONTOS)
+VALUES
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'wictor@usp.br'), 
+(SELECT Q.ID 
+FROM QUIZ Q
+WHERE Q.NIVEL = 'PRATA' AND Q.TEMA = 'Matemática' AND Q.SUB_TEMA = 'Discreta'), 40);
+
+INSERT INTO RESPONDE_QUIZ
+(USUARIO, QUIZ, PONTOS)
+VALUES
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'wictor@usp.br'), 
+(SELECT Q.ID 
+FROM QUIZ Q
+WHERE Q.NIVEL = 'OURO' AND Q.TEMA = 'Matemática' AND Q.SUB_TEMA = 'Cálculo'), 30);
+
+INSERT INTO RESPONDE_QUIZ
+(USUARIO, QUIZ, PONTOS)
+VALUES
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'wictor@usp.br'), 
+(SELECT Q.ID 
+FROM QUIZ Q
+WHERE Q.NIVEL = 'BRONZE' AND Q.TEMA = 'Matemática' AND Q.SUB_TEMA = 'Cálculo'), 60);
+
+
+INSERT INTO RESPONDE_QUIZ
+(USUARIO, QUIZ, PONTOS)
+VALUES
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'wictor@usp.br'), 
+(SELECT Q.ID 
+FROM QUIZ Q
+WHERE Q.NIVEL = 'OURO' AND Q.TEMA = 'Matemática' AND Q.SUB_TEMA = 'Discreta'), 10);
+
+INSERT INTO RESPONDE_QUIZ
+(USUARIO, QUIZ, PONTOS)
+VALUES
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'wictor@usp.br'), 
+(SELECT Q.ID 
+FROM QUIZ Q
+WHERE Q.NIVEL = 'BRONZE' AND Q.TEMA = 'Matemática' AND Q.SUB_TEMA = 'Álgebra Linear'), 80);
+
+INSERT INTO RESPONDE_QUIZ
+(USUARIO, QUIZ, PONTOS)
+VALUES
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'wictor@usp.br'), 
+(SELECT Q.ID 
+FROM QUIZ Q
+WHERE Q.NIVEL = 'PRATA' AND Q.TEMA = 'Matemática' AND Q.SUB_TEMA = 'Álgebra Linear'), 70);
+
+INSERT INTO RESPONDE_QUIZ
+(USUARIO, QUIZ, PONTOS)
+VALUES
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'wictor@usp.br'), 
+(SELECT Q.ID 
+FROM QUIZ Q
+WHERE Q.NIVEL = 'OURO' AND Q.TEMA = 'Matemática' AND Q.SUB_TEMA = 'Álgebra Linear'), 60);
+
+-- ================= BERMUDES =======================
+
+INSERT INTO RESPONDE_QUIZ
+(USUARIO, QUIZ, PONTOS)
+VALUES
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'bermudes@gmail.com.br'), 
+(SELECT Q.ID 
+FROM QUIZ Q
+WHERE Q.NIVEL = 'PRATA' AND Q.TEMA = 'Matemática' AND Q.SUB_TEMA = 'Cálculo'), 50);
+
+
+INSERT INTO RESPONDE_QUIZ
+(USUARIO, QUIZ, PONTOS)
+VALUES
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'bermudes@gmail.com.br'), 
+(SELECT Q.ID 
+FROM QUIZ Q
+WHERE Q.NIVEL = 'PRATA' AND Q.TEMA = 'Matemática' AND Q.SUB_TEMA = 'Discreta'), 10);
+
+INSERT INTO RESPONDE_QUIZ
+(USUARIO, QUIZ, PONTOS)
+VALUES
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'bermudes@gmail.com.br'), 
+(SELECT Q.ID 
+FROM QUIZ Q
+WHERE Q.NIVEL = 'OURO' AND Q.TEMA = 'Matemática' AND Q.SUB_TEMA = 'Discreta'), 10);
+
+INSERT INTO RESPONDE_QUIZ
+(USUARIO, QUIZ, PONTOS)
+VALUES
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'bermudes@gmail.com.br'), 
+(SELECT Q.ID 
+FROM QUIZ Q
+WHERE Q.NIVEL = 'BRONZE' AND Q.TEMA = 'Matemática' AND Q.SUB_TEMA = 'Álgebra Linear'), 30);
+
+INSERT INTO RESPONDE_QUIZ
+(USUARIO, QUIZ, PONTOS)
+VALUES
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'bermudes@gmail.com.br'), 
+(SELECT Q.ID 
+FROM QUIZ Q
+WHERE Q.NIVEL = 'PRATA' AND Q.TEMA = 'Matemática' AND Q.SUB_TEMA = 'Álgebra Linear'), 20);
+
+INSERT INTO RESPONDE_QUIZ
+(USUARIO, QUIZ, PONTOS)
+VALUES
+((SELECT U.ID 
+FROM USUARIO U
+WHERE U.EMAIL = 'bermudes@gmail.com.br'), 
+(SELECT Q.ID 
+FROM QUIZ Q
+WHERE Q.NIVEL = 'OURO' AND Q.TEMA = 'Matemática' AND Q.SUB_TEMA = 'Álgebra Linear'), 10);
 
 --------------------------------------------------------------------------------
 INSERT INTO THREAD
