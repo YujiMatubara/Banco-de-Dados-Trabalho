@@ -1,10 +1,10 @@
 --Query 1
 -- Selecionar médias de todos os cursos de um determinado tema que possuam pelo menos 50 avaliações ordenadas de maior para menor.
 -- (ou seja, queremos selecionar os cursos mais bem avaliados de cada tema) 
-SELECT titulo, SOMA_AVALIACAO/QTD_AVALIACAO AS Media_Curso 
-FROM Curso JOIN Assunto ON Curso.tema = Assunto.tema
-WHERE Curso.QTD_AVALIACAO >= 50
-GROUP BY(curso.titulo, curso.tema, SOMA_AVALIACAO/QTD_AVALIACAO)
+SELECT C.TITULO, ROUND(SOMA_AVALIACAO/QTD_AVALIACAO, 1) AS MEDIA_CURSO
+FROM CURSO C JOIN ASSUNTO A ON C.TEMA = A.TEMA
+WHERE C.QTD_AVALIACAO >= 50 AND UPPER(C.TEMA) = 'MATEMÁTICA'
+GROUP BY(C.TITULO, C.TEMA, SOMA_AVALIACAO/QTD_AVALIACAO)
 ORDER BY(SOMA_AVALIACAO/QTD_AVALIACAO) DESC;
 
 -- Query 2
