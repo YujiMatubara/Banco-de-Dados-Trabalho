@@ -3,7 +3,6 @@
 # https://stackoverflow.com/questions/72015723/databaseerror-dpi-1047-cannot-locate-a-64-bit-oracle-client-library-running-c
 
 instantclient = r"C:\Users\Luisa\Documents\client_BD\instantclient_21_6"
-instantclient = "../../instantclient_21_6"
 
 import cx_Oracle
 from util.janelas import *
