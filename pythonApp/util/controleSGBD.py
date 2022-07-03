@@ -19,21 +19,12 @@ def cadastra_login(cursor, username, email):
     sql = "select ID from USUARIO where EMAIL = :userEmail"
     return cursor.execute(sql, [email]).fetchall()[0][0]
 
-
-def lista_cursos_usuario_(cursor, token):
-    # Com o ID do usuário, pega todos os cursos já cursados que se juntam com o user e imprime
-    sql = "select CURSO.ID, CURSO.TITULO from CURSO join CURSA on CURSO.ID = CURSA.CURSO where CURSA.USUARIO = :userToken"
-    lista_cursos = cursor.execute(sql, userToken=token).fetchall()
-    if lista_cursos:
-        for nome_curso, id_curso in lista_cursos:
-            print(f"Nome do curso: {nome_curso}\nID do curso: {id_curso}\n")
-    else:
-        print("Nenhum curso feito/fazendo")
-    return
-
 def lista_cursos_usuario(cursor, token):
-    def avaliacao_to_str(val : int) -> str:
-        return ("*" * val) + (" " * (5 - val))
+    def avaliacao_to_str(val : int) -> str:        
+        res = "o" * (val // 2)
+        res += "c" if val %2 == 1 else ""
+        res += " " * (5 - len(res))
+        return res
 
     def imprime_curso(titulo, tema, subtema, avaliacao):
         string = "[{avaliacao}] {titulo} \t {tema}: {subtema}".format(
@@ -60,16 +51,19 @@ def lista_cursos_usuario(cursor, token):
             for titulo, tema, subtema, _, avaliacao in andamento:
                 imprime_curso(titulo, tema, subtema, avaliacao)
             print()
+
         if concluido:
             print(f"Cursos concluidos ({len(concluido)}):")
             for titulo, tema, subtema, _, avaliacao in concluido:
                 imprime_curso(titulo, tema, subtema, avaliacao)
             print()
+
         if planejado: 
             print(f"Cursos planejados ({len(planejado)}):")
             for titulo, tema, subtema, _, avaliacao in planejado:
                 imprime_curso(titulo, tema, subtema, avaliacao)
             print()
+
         if abandonado:
             print(f"Cursos abandonados ({len(abandonado)}):")
             for titulo, tema, subtema, _, avaliacao in abandonado:
@@ -78,6 +72,7 @@ def lista_cursos_usuario(cursor, token):
 
     else:
         print("Nenhum curso feito/fazendo")
+        print()
 
 
 
@@ -88,9 +83,10 @@ def lista_amizades_usuario(cursor, token):
     lista_amigos = cursor.execute(sql, userToken=token).fetchall()
     if lista_amigos:
         for data_inicio, nome, nivel_conquista in lista_amigos:
-            print(f"{nome}\tNivel:{nivel_conquista}\tdesde {data_inicio}")
+            print(f"{nome:30} - Nivel:{nivel_conquista:10} - desde {data_inicio}")
     else:
         print("Você ainda nao fez nenhuma amizade ainda :(")
+    print()
 
 def lista_conquistas_usuario(cursor, token):
     # Com o ID do usuario, pega todas as conquistas que ele tem
@@ -105,13 +101,13 @@ def lista_conquistas_usuario(cursor, token):
             print(f"{conquista_nivel:8} - {conquista_nome}")
     else:
         print("Tente desbloquear alguma conquista, como por exemplo concluir a criacao de sua conta")
+    print()
 
 
 
 def pesquisa_cursos(cursor, nome_curso):
     # pega a substring correspondente a um curso (ignorando acentos na base de dados)
     nome_curso = "%" + nome_curso.upper() + "%"
-    print(nome_curso)
     sql = "select CURSO.ID, CURSO.TITULO from CURSO where upper(CURSO.TITULO) COLLATE LATIN_AI like :nome_curso"
     lista_cursos = cursor.execute(sql, [nome_curso]).fetchall()
     if lista_cursos:
@@ -119,4 +115,4 @@ def pesquisa_cursos(cursor, nome_curso):
             print(f"Nome do curso: {curso[1]}\nID do curso: {curso[0]}\n")
     else:
         print("Nenhum curso encontrado")
-    return
+    print()

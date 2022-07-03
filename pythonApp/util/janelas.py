@@ -4,8 +4,12 @@ from util import valida
 # tela de login que chama as funções ligadas ao SGBD
 def login(cursor):
     while True:
+        print("-" * 48)
         print("Digite 1 para login")
         print("Digite 2 para registrar")
+        print("-" * 48)
+        print("\n")
+
         opcao = int(input("Option: "))
 
         if opcao == 1:
@@ -31,11 +35,13 @@ def login(cursor):
             paraken = cadastra_login(cursor, username, email)
             if paraken is not None:
                 break
-
+    
+    print()
     if paraken:
         print(f"Id do usuario: {paraken}")
     else:
         print("nao foi possivel encontrar esse usuario")
+    print()
 
     return paraken
 
@@ -43,13 +49,15 @@ def login(cursor):
 # Tela principal que lista informações pertinentes e faz consultas
 def main_window(cursor, token):
     while True:
-        print("-----------------------------------------------")
+        print("-" * 48)
         print("Digite 0 para sair")
         print("Digite 1 para ver seus cursos")
         print("Digite 2 para ver sua lista de amigos")
         print("Digite 3 para ver suas conquistas")
         print("Digite 4 para pesquisar cursos")
-        print("-----------------------------------------------\n\n")
+        print("-" * 48)
+        print("\n")
+
         opcao = int(input("Option: "))
 
         # sair do app
@@ -68,8 +76,5 @@ def main_window(cursor, token):
         elif opcao == 4:
             nome_curso = input("Digite o nome do curso (SEM ACENTO): ")
             pesquisa_cursos(cursor, nome_curso)
-        # opção inválida
-        else:
-            print("Opção inválida")
 
     print("Good bye!!")
