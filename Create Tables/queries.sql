@@ -58,7 +58,7 @@ INNER JOIN CURSO C ON M.CURSO = C.ID
 WHERE C.TEMA = ‘X’
 ORDER BY C.SOMA_AVALIACAO / C.QTD_AVALIACAO DESC;
 
--- Query 5 (falta agrupar)
+-- Query 5
 -- Fazer ranking entre amigos com base na quantidade de conquistas ordenadas por conquistas de nível alto para baixo (tipo placar de medalhas das olimpíadas) 
 SELECT EMAIL,
 (DIAMANTE * 500) + (PLATINA * 300) + (OURO * 200) + (PRATA * 100) + (BRONZE * 50) PONTOS,
