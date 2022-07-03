@@ -65,11 +65,11 @@ VALUES
 
 --------------------------------------------------------------------------------
 
-INSERT INTO PONTUACAO_CONQUISTA (NIVEL, ORDEM) VALUES ('Bronze', '1');
-INSERT INTO PONTUACAO_CONQUISTA (NIVEL, ORDEM) VALUES ('Prata', '2');
-INSERT INTO PONTUACAO_CONQUISTA (NIVEL, ORDEM) VALUES ('Ouro', '3');
-INSERT INTO PONTUACAO_CONQUISTA (NIVEL, ORDEM) VALUES ('Platina', '4');
-INSERT INTO PONTUACAO_CONQUISTA (NIVEL, ORDEM) VALUES ('Diamante', '5');
+INSERT INTO PONTUACAO_CONQUISTA (NIVEL, ORDEM) VALUES ('BRONZE', '1');
+INSERT INTO PONTUACAO_CONQUISTA (NIVEL, ORDEM) VALUES ('PRATA', '2');
+INSERT INTO PONTUACAO_CONQUISTA (NIVEL, ORDEM) VALUES ('OURO', '3');
+INSERT INTO PONTUACAO_CONQUISTA (NIVEL, ORDEM) VALUES ('PLATINA', '4');
+INSERT INTO PONTUACAO_CONQUISTA (NIVEL, ORDEM) VALUES ('DIAMANTE', '5');
 
 --------------------------------------------------------------------------------
 
@@ -138,62 +138,62 @@ VALUES
 INSERT INTO CONQUISTAS
 (NOME, NIVEL)
 VALUES
-('Conta criada', 'Bronze');
+('Conta criada', 'BRONZE');
 
 INSERT INTO CONQUISTAS
 (NOME, NIVEL)
 VALUES
-('Email verificado', 'Bronze');
+('Email verificado', 'BRONZE');
 
 INSERT INTO CONQUISTAS
 (NOME, NIVEL)
 VALUES
-('Compartilhando conhecimento', 'Bronze');
+('Compartilhando conhecimento', 'BRONZE');
 
 INSERT INTO CONQUISTAS
 (NOME, NIVEL)
 VALUES
-('Grupo de Estudos', 'Prata');
+('Grupo de Estudos', 'PRATA');
 
 INSERT INTO CONQUISTAS
 (NOME, NIVEL)
 VALUES
-('Comentarista', 'Prata');
+('Comentarista', 'PRATA');
 
 INSERT INTO CONQUISTAS
 (NOME, NIVEL)
 VALUES
-('Disciplinado', 'Prata');
+('Disciplinado', 'PRATA');
 
 INSERT INTO CONQUISTAS
 (NOME, NIVEL)
 VALUES
-('Valeu o esforço', 'Diamante');
+('Valeu o esforço', 'DIAMANTE');
 
 INSERT INTO CONQUISTAS
 (NOME, NIVEL)
 VALUES
-('Curso concluido', 'Prata');
+('Curso concluido', 'PRATA');
 
 INSERT INTO CONQUISTAS
 (NOME, NIVEL)
 VALUES
-('Quiz gabaritado', 'Prata');
+('Quiz gabaritado', 'PRATA');
 
 INSERT INTO CONQUISTAS
 (NOME, NIVEL)
 VALUES
-('Mestre das especializações', 'Platina');
+('Mestre das especializações', 'PLATINA');
 
 INSERT INTO CONQUISTAS
 (NOME, NIVEL)
 VALUES
-('Fã de vídeo aula', 'Platina');
+('Fã de vídeo aula', 'PLATINA');
 
 INSERT INTO CONQUISTAS
 (NOME, NIVEL)
 VALUES
-('Sala de aula', 'Ouro');
+('Sala de aula', 'OURO');
 
 --------------------------------------------------------------------------------
 INSERT INTO CONQUISTA_REQUISITO
