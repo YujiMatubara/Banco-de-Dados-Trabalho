@@ -56,22 +56,22 @@ def lista_cursos_usuario(cursor, token):
         abandonado =  [i for i in lista_cursos if i[3] == 'ABANDONADO']
 
         if andamento:
-            print("Cursos em andamento: ")
+            print(f"Cursos em andamento ({len(andamento)}):")
             for titulo, tema, subtema, _, avaliacao in andamento:
                 imprime_curso(titulo, tema, subtema, avaliacao)
             print()
         if concluido:
-            print("Cursos concluidos: ")
+            print(f"Cursos concluidos ({len(concluido)}):")
             for titulo, tema, subtema, _, avaliacao in concluido:
                 imprime_curso(titulo, tema, subtema, avaliacao)
             print()
         if planejado: 
-            print("Cursos planejados: ")
+            print(f"Cursos planejados ({len(planejado)}):")
             for titulo, tema, subtema, _, avaliacao in planejado:
                 imprime_curso(titulo, tema, subtema, avaliacao)
             print()
         if abandonado:
-            print("Cursos abandonados: ")
+            print(f"Cursos abandonados ({len(abandonado)}):")
             for titulo, tema, subtema, _, avaliacao in abandonado:
                 imprime_curso(titulo, tema, subtema, avaliacao)
             print()
