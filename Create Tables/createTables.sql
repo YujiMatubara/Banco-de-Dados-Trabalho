@@ -113,8 +113,8 @@ CREATE TABLE USUARIO (
     constraint PK_USUARIO primary key(ID),
     
     --Constraints de checagem
-    constraint NIVEL_PRIV_CONSTRAINT check (NIVEL_DE_PRIVILEGIO in ('1', '0'))
-    constraint CK_EMAIL check EMAIL like '%@%'
+    constraint NIVEL_PRIV_CONSTRAINT check (NIVEL_DE_PRIVILEGIO in ('1', '0')),
+    constraint CK_EMAIL check (EMAIL like '%@%')
 );
 
 CREATE TABLE CURSO (
