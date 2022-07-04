@@ -106,7 +106,6 @@ CREATE TABLE USUARIO (
     EMAIL varchar2(255) not null,
     NOME varchar2(100) not null,
     NIVEL_DE_PRIVILEGIO char default '0' not null,
-    NIVEL_DE_CONQUISTA number(4) default 0 not null,
     
     --Constraints básicas
     constraint EMAIL_UNIQUE unique(EMAIL),
