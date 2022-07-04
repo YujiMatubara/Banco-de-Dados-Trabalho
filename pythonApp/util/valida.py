@@ -1,16 +1,16 @@
+import re
+
 def email(value: str) -> bool:
     res = (
         len(value) <= 255
         and len(value) >= 3
-        and '@' in value
-        and value[0] != '@'
-        and value[-1] != '@'
+        and re.match(r"^[A-Za-z0-9.+-]+@[A-Za-z0-9.-]+.[a-zA-Z]*$", value)
     )
 
     if res:
         return True
 
-    print("Email invalido: o email pode ter no maximo 255 caracteres e tem que possuir um @\n")
+    print("Email invalido: o email pode ter no maximo 255 caracteres e deve possuir formato valido de email.\n")
     return False
 
 
