@@ -3,7 +3,7 @@ from util import valida
 
 # tela de login que chama as funções ligadas ao SGBD
 def login(cursor):
-    while True:
+    while True
         print("-" * 48)
         print("Digite 1 para login")
         print("Digite 2 para registrar")
@@ -15,8 +15,7 @@ def login(cursor):
         if opcao == 1:
             email = input("Digite seu email: ")
             if not valida.email(email):
-                print("Email invalido: O email nao pode ter mais de 255 caracteres\n")
-                continue
+               continue
 
             paraken = tentativa_login(cursor, email)
             if paraken is not None:
@@ -24,12 +23,11 @@ def login(cursor):
 
         elif opcao == 2:
             username = input("Digite seu username: ")
+            if not valida.username(username):          
+                continue
+
             email = input("Digite seu email: ")
             if not valida.email(email):
-                print("Email invalido: O email nao pode ter mais de 255 caracteres\n")
-                continue
-            if not valida.username(username):
-                print("Username invalido: o username nao pode ter mais de 100 caracteres\n")
                 continue
 
             paraken = cadastra_login(cursor, username, email)
@@ -75,6 +73,7 @@ def main_window(cursor, token):
         # pesquisar um curso novo
         elif opcao == 4:
             nome_curso = input("Digite o nome do curso (SEM ACENTO): ")
-            pesquisa_cursos(cursor, nome_curso)
+            if valida.curso_titulo(nome_curso):
+                pesquisa_cursos(cursor, nome_curso)
 
     print("Good bye!!")

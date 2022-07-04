@@ -26,11 +26,16 @@ enter_user = cx_Oracle.connect(
 )
 
 cursor = enter_user.cursor()
+print()
 
 # usando o sql
 # TESTE
 # cursor.execute('insert into USUARIO (EMAIL, NOME) values (\'teste@gmail.com\',\'Teste Da Silva\')')
 token = login(cursor)
+
+# Caso o usuario tenha sido registrado, eh preciso dar um commit nele
+enter_user.commit()
+
 if token:
     main_window(cursor, token)
 
