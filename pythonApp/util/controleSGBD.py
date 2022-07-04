@@ -71,7 +71,7 @@ def lista_cursos_usuario(cursor, token):
             print()
 
     else:
-        print("Nenhum curso feito/fazendo")
+        print("Nenhum curso realizado/em andamento.")
         print()
 
 
@@ -79,24 +79,20 @@ def lista_cursos_usuario(cursor, token):
 
 def lista_amizades_usuario(cursor, token):
     # Com o ID do usuario, pega todos os amigos que ele tem
-    sql = "select AMIZADE.DATA_INICIO_AMIZADE, AMIGO.NOME, AMIGO.NIVEL_DE_CONQUISTA from USUARIO join AMIZADE on USUARIO.ID = AMIZADE.USUARIO join USUARIO AMIGO on AMIGO.ID = AMIZADE.AMIGO where USUARIO.ID = :userToken"
+    sql = "select AMIZADE.DATA_INICIO_AMIZADE, AMIGO.NOME from USUARIO join AMIZADE on USUARIO.ID = AMIZADE.USUARIO join USUARIO AMIGO on AMIGO.ID = AMIZADE.AMIGO where USUARIO.ID = :userToken"
     lista_amigos = cursor.execute(sql, userToken=token).fetchall()
     if lista_amigos:
-        for data_inicio, nome, nivel_conquista in lista_amigos:
-            print(f"{nome:30} - Nivel:{nivel_conquista:10} - desde {data_inicio}")
+        for data_inicio, nome in lista_amigos:
+            print(f"{nome:30} - desde {data_inicio}")
     else:
         print("Você ainda nao fez nenhuma amizade ainda :(")
     print()
 
 def lista_conquistas_usuario(cursor, token):
     # Com o ID do usuario, pega todas as conquistas que ele tem
-    sql = "select NIVEL_DE_CONQUISTA from USUARIO where USUARIO.ID = :userToken"
-    nivel = cursor.execute(sql, userToken=token).fetchall()[0][0]
     sql = "select C.NOME, C.NIVEL from DESBLOQUEIA_CONQUISTA D join CONQUISTAS C on D.NOME_CONQUISTA = C.NOME where D.USUARIO = :userToken"
     lista_conquistas = cursor.execute(sql, userToken=token).fetchall()
     if lista_conquistas:
-        print(f"Voce tem {nivel} pontos")
-        print()
         for conquista_nome, conquista_nivel in lista_conquistas:
             print(f"{conquista_nivel:8} - {conquista_nome}")
     else:
