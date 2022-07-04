@@ -3,14 +3,18 @@ from util import valida
 
 # tela de login que chama as funções ligadas ao SGBD
 def login(cursor):
-    while True
+    while True:
         print("-" * 48)
         print("Digite 1 para login")
         print("Digite 2 para registrar")
         print("-" * 48)
         print("\n")
 
-        opcao = int(input("Option: "))
+        try:
+            opcao = int(input("Option: "))
+        except ValueError as error:
+            print("Entrada invalida, tente novamente.")
+            opcao = -1
 
         if opcao == 1:
             email = input("Digite seu email: ")
@@ -38,7 +42,7 @@ def login(cursor):
     if paraken:
         print(f"Id do usuario: {paraken}")
     else:
-        print("nao foi possivel encontrar esse usuario")
+        print("Nao foi possivel encontrar esse usuario")
     print()
 
     return paraken
@@ -56,7 +60,11 @@ def main_window(cursor, token):
         print("-" * 48)
         print("\n")
 
-        opcao = int(input("Option: "))
+        try:
+            opcao = int(input("Option: "))
+        except ValueError as error:
+            print("Entrada invalida, tente novamente.")
+            opcao = -1
 
         # sair do app
         if opcao == 0:
