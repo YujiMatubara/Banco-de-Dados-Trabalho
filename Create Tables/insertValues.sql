@@ -1,67 +1,67 @@
 INSERT INTO USUARIO 
-(EMAIL, NOME, NIVEL_DE_PRIVILEGIO, NIVEL_DE_CONQUISTA) 
+(EMAIL, NOME, NIVEL_DE_PRIVILEGIO) 
 VALUES
-('yuji.matubara@usp.br', 'Lucas Yuji Matubara', 0, 1234);
+('yuji.matubara@usp.br', 'Lucas Yuji Matubara', 0);
 
 INSERT INTO USUARIO 
-(EMAIL, NOME, NIVEL_DE_PRIVILEGIO, NIVEL_DE_CONQUISTA) 
+(EMAIL, NOME, NIVEL_DE_PRIVILEGIO) 
 VALUES
-('wictor@usp.br', 'Wictor Dalbosco Silva', 0, 1225);
+('wictor@usp.br', 'Wictor Dalbosco Silva', 0);
 
 INSERT INTO USUARIO 
-(EMAIL, NOME, NIVEL_DE_PRIVILEGIO, NIVEL_DE_CONQUISTA) 
+(EMAIL, NOME, NIVEL_DE_PRIVILEGIO) 
 VALUES
-('pedro@usp.br', 'Pedro Henrique', 1, 1231);
+('pedro@usp.br', 'Pedro Henrique', 1);
 
 INSERT INTO USUARIO 
-(EMAIL, NOME, NIVEL_DE_PRIVILEGIO, NIVEL_DE_CONQUISTA) 
+(EMAIL, NOME, NIVEL_DE_PRIVILEGIO) 
 VALUES
-('luisa@usp.br', 'Luisa Balleroni', 1, 1400);
+('luisa@usp.br', 'Luisa Balleroni', 1);
 
 INSERT INTO USUARIO 
-(EMAIL, NOME, NIVEL_DE_PRIVILEGIO, NIVEL_DE_CONQUISTA) 
+(EMAIL, NOME, NIVEL_DE_PRIVILEGIO) 
 VALUES
-('bermudes@gmail.com.br', 'Matheus Bermudes Viana', 0, 1100);
+('bermudes@gmail.com.br', 'Matheus Bermudes Viana', 0);
 
 INSERT INTO USUARIO 
-(EMAIL, NOME, NIVEL_DE_PRIVILEGIO, NIVEL_DE_CONQUISTA) 
+(EMAIL, NOME, NIVEL_DE_PRIVILEGIO) 
 VALUES
-('lucas_matos@gmail.com.br', 'Lucas Matos', 0, 120);
+('lucas_matos@gmail.com.br', 'Lucas Matos', 0);
 
 INSERT INTO USUARIO 
-(EMAIL, NOME, NIVEL_DE_PRIVILEGIO, NIVEL_DE_CONQUISTA) 
+(EMAIL, NOME, NIVEL_DE_PRIVILEGIO) 
 VALUES
-('laura_matiolli@gmail.com.br', 'Laura Matiolli', 0, 450);
+('laura_matiolli@gmail.com.br', 'Laura Matiolli', 0);
 
 INSERT INTO USUARIO 
-(EMAIL, NOME, NIVEL_DE_PRIVILEGIO, NIVEL_DE_CONQUISTA) 
+(EMAIL, NOME, NIVEL_DE_PRIVILEGIO) 
 VALUES
-('camila_sakuraba@gmail.com.br', 'Camila Pigato Sakuraba', 0, 120);
+('camila_sakuraba@gmail.com.br', 'Camila Pigato Sakuraba', 0);
 
 INSERT INTO USUARIO 
-(EMAIL, NOME, NIVEL_DE_PRIVILEGIO, NIVEL_DE_CONQUISTA) 
+(EMAIL, NOME, NIVEL_DE_PRIVILEGIO) 
 VALUES
-('vinicius_guedes@gmail.com.br', 'Vinicius Guedes', 0, 30);
+('vinicius_guedes@gmail.com.br', 'Vinicius Guedes', 0);
 
 INSERT INTO USUARIO 
-(EMAIL, NOME, NIVEL_DE_PRIVILEGIO, NIVEL_DE_CONQUISTA) 
+(EMAIL, NOME, NIVEL_DE_PRIVILEGIO) 
 VALUES
-('caue_trevelin@gmail.com.br', 'Caue Trevelin', 1, 470);
+('caue_trevelin@gmail.com.br', 'Caue Trevelin', 1);
 
 INSERT INTO USUARIO 
-(EMAIL, NOME, NIVEL_DE_PRIVILEGIO, NIVEL_DE_CONQUISTA) 
+(EMAIL, NOME, NIVEL_DE_PRIVILEGIO) 
 VALUES
-('aline_ventura@gmail.com.br', 'Aline Ventura', 0, 320);
+('aline_ventura@gmail.com.br', 'Aline Ventura', 0);
 
 INSERT INTO USUARIO 
-(EMAIL, NOME, NIVEL_DE_PRIVILEGIO, NIVEL_DE_CONQUISTA) 
+(EMAIL, NOME, NIVEL_DE_PRIVILEGIO) 
 VALUES
-('nick_iacobacci@gmail.com.br', 'Nicole Iacobacci', 0, 320);
+('nick_iacobacci@gmail.com.br', 'Nicole Iacobacci', 0);
 
 INSERT INTO USUARIO 
-(EMAIL, NOME, NIVEL_DE_PRIVILEGIO, NIVEL_DE_CONQUISTA) 
+(EMAIL, NOME, NIVEL_DE_PRIVILEGIO) 
 VALUES
-('fernando_yutaka@gmail.com.br', 'Fernando Yutaka', 0, 980);
+('fernando_yutaka@gmail.com.br', 'Fernando Yutaka', 0);
 
 --------------------------------------------------------------------------------
 
