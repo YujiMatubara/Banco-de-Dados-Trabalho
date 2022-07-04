@@ -4,6 +4,7 @@
 
 instantclient = r"C:\Users\Luisa\Documents\client_BD\instantclient_21_6"
 instantclient = r"C:\Users\11218692\Desktop\instantclient_21_6"
+instantclient = r"C:\Users\luisa\Downloads\trabs_bd\TrabalhoBD-main\pythonApp\instantclient_21_6"
 
 import cx_Oracle
 from util.janelas import *
