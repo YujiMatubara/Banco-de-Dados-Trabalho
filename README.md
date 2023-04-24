@@ -2,11 +2,11 @@
 Elaboração de um Banco de Dados Oracle para reunir plataformas de cursos educacionais com possibilidades de discussão entre os alunos, suporte, sistema de incentivo (com conquistas, quizes), e usuário curador. Elaboração com justificativas do diagrama MER (Modelo Entidade Relacionamento), diagrama MR (Modelo Relacional), e implementação do banco com buscas de complexidades médias e alta.
 
 # Grupo
-Eduardo Souza Rocha
-Lucas Yuji Matubara
-Luísa Balleroni Shimabucoro
-Pedro Henrique Raymundi
-Wictor Dalbosco Silva
+- Eduardo Souza Rocha
+- Lucas Yuji Matubara
+- Luísa Balleroni Shimabucoro
+- Pedro Henrique Raymundi
+- Wictor Dalbosco Silva
 
 # Recusos
 cx-Oracle
