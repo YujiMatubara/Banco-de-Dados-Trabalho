@@ -9,10 +9,10 @@ Elaboração de um Banco de Dados Oracle para reunir plataformas de cursos educa
 - Wictor Dalbosco Silva
 
 # Recusos
-cx-Oracle
+- cx-Oracle
 pip install cx-Oracle
 
-Client
+- Client
 https://www.oracle.com/database/technologies/instant-client/downloads.html
 
 # Relatório
