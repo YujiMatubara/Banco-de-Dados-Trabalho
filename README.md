@@ -8,7 +8,7 @@ Elaboração de um Banco de Dados Oracle para reunir plataformas de cursos educa
 - Pedro Henrique Raymundi
 - Wictor Dalbosco Silva
 
-# Recusos
+# Recursos
 - cx-Oracle \
 pip install cx-Oracle
 
